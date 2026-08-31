@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>GPA Calculator - Student Toolkit</title>
+
+    <meta name="description"
+        content="Calculate your GPA quickly and easily with our free GPA Calculator.">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+    <div class="header-content">
+        <a href="index.html" class="logo">Student Toolkit</a>
+        <p>Free tools to make student life easier.</p>
+    </div>
+</header>
+
+<main>
+
+    <section class="calculator-section">
+
+        <div class="calculator-card">
+
+            <h1>GPA Calculator</h1>
+
+            <p class="calculator-description">
+                Calculate your GPA using your course grades and credit hours.
+            </p>
+
+            <div class="input-group">
+                <label for="gpaGrade1">Course 1 Grade (0-4)</label>
+                <input type="number" id="gpaGrade1" placeholder="Example: 3.5"
+                    min="0" max="4" step="0.01">
+            </div>
+
+            <div class="input-group">
+                <label for="gpaCredits1">Course 1 Credits</label>
+                <input type="number" id="gpaCredits1" placeholder="Example: 3"
+                    min="0" step="0.5">
+            </div>
+
+            <div class="input-group">
+                <label for="gpaGrade2">Course 2 Grade (0-4)</label>
+                <input type="number" id="gpaGrade2" placeholder="Example: 3.0"
+                    min="0" max="4" step="0.01">
+            </div>
+
+            <div class="input-group">
+                <label for="gpaCredits2">Course 2 Credits</label>
+                <input type="number" id="gpaCredits2" placeholder="Example: 3"
+                    min="0" step="0.5">
+            </div>
+
+            <div class="input-group">
+                <label for="gpaGrade3">Course 3 Grade (0-4)</label>
+                <input type="number" id="gpaGrade3" placeholder="Example: 3.7"
+                    min="0" max="4" step="0.01">
+            </div>
+
+            <div class="input-group">
+                <label for="gpaCredits3">Course 3 Credits</label>
+                <input type="number" id="gpaCredits3" placeholder="Example: 3"
+                    min="0" step="0.5">
+            </div>
+
+            <button id="calculateGPA" class="primary-button">
+                Calculate GPA
+            </button>
+
+            <button id="clearGPA" class="secondary-button">
+                Clear
+            </button>
+
+            <div id="gpaResult" class="result">
+                <p>Your GPA will appear here.</p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section class="information-section">
+
+        <h2>What is GPA?</h2>
+
+        <p>
+            GPA stands for Grade Point Average. It is a numerical
+            representation of a student's academic performance.
+        </p>
+
+        <p>
+            Many colleges and universities in the United States use
+            a 4.0 GPA scale, although grading systems can vary between
+            institutions.
+        </p>
+
+        <h2>How is GPA calculated?</h2>
+
+        <p>
+            GPA is calculated by multiplying each course grade by its
+            credit value, adding those results together, and dividing
+            by the total number of credits.
+        </p>
+
+    </section>
+
+
+    <div class="back-home">
+        <a href="index.html">← Back to Student Toolkit</a>
+    </div>
+
+</main>
+
+<footer>
+    <p>© 2026 Student Toolkit</p>
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Grade Calculator - Student Toolkit</title>
+
+    <meta name="description"
+        content="Calculate your current course grade using assignment scores and weights.">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+    <div class="header-content">
+        <a href="index.html" class="logo">Student Toolkit</a>
+        <p>Free tools to make student life easier.</p>
+    </div>
+</header>
+
+<main>
+
+    <section class="calculator-section">
+
+        <div class="calculator-card">
+
+            <h1>Grade Calculator</h1>
+
+            <p class="calculator-description">
+                Calculate your current course grade using assignment
+                scores and their weights.
+            </p>
+
+            <div class="input-group">
+                <label for="assignmentGrade1">
+                    Assignment 1 Grade (%)
+                </label>
+                <input type="number" id="assignmentGrade1"
+                    placeholder="Example: 85" min="0" max="100">
+            </div>
+
+            <div class="input-group">
+                <label for="assignmentWeight1">
+                    Assignment 1 Weight (%)
+                </label>
+                <input type="number" id="assignmentWeight1"
+                    placeholder="Example: 20" min="0" max="100">
+            </div>
+
+            <div class="input-group">
+                <label for="assignmentGrade2">
+                    Assignment 2 Grade (%)
+                </label>
+                <input type="number" id="assignmentGrade2"
+                    placeholder="Example: 90" min="0" max="100">
+            </div>
+
+            <div class="input-group">
+                <label for="assignmentWeight2">
+                    Assignment 2 Weight (%)
+                </label>
+                <input type="number" id="assignmentWeight2"
+                    placeholder="Example: 30" min="0" max="100">
+            </div>
+
+            <div class="input-group">
+                <label for="assignmentGrade3">
+                    Assignment 3 Grade (%)
+                </label>
+                <input type="number" id="assignmentGrade3"
+                    placeholder="Example: 80" min="0" max="100">
+            </div>
+
+            <div class="input-group">
+                <label for="assignmentWeight3">
+                    Assignment 3 Weight (%)
+                </label>
+                <input type="number" id="assignmentWeight3"
+                    placeholder="Example: 50" min="0" max="100">
+            </div>
+
+            <button id="calculateGrade" class="primary-button">
+                Calculate Grade
+            </button>
+
+            <button id="clearGrade" class="secondary-button">
+                Clear
+            </button>
+
+            <div id="gradeResult" class="result">
+                <p>Your current course grade will appear here.</p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section class="information-section">
+
+        <h2>What is a weighted grade?</h2>
+
+        <p>
+            A weighted grade gives different assignments, exams,
+            projects, or activities different levels of importance
+            toward your final course grade.
+        </p>
+
+        <h2>How does it work?</h2>
+
+        <p>
+            Enter each assignment's score and its percentage of the
+            total course grade. The calculator combines the weighted
+            scores to determine your current grade.
+        </p>
+
+    </section>
+
+
+    <div class="back-home">
+        <a href="index.html">← Back to Student Toolkit</a>
+    </div>
+
+</main>
+
+<footer>
+    <p>© 2026 Student Toolkit</p>
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>

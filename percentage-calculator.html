@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Percentage Calculator - Student Toolkit</title>
+
+    <meta name="description"
+        content="Calculate percentages quickly with this free online percentage calculator.">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+    <div class="header-content">
+        <a href="index.html" class="logo">Student Toolkit</a>
+        <p>Free tools to make student life easier.</p>
+    </div>
+</header>
+
+<main>
+
+    <section class="calculator-section">
+
+        <div class="calculator-card">
+
+            <h1>Percentage Calculator</h1>
+
+            <p class="calculator-description">
+                Quickly calculate what percentage one number is of another.
+            </p>
+
+            <div class="input-group">
+                <label for="percentagePart">
+                    Part
+                </label>
+                <input type="number" id="percentagePart"
+                    placeholder="Example: 25">
+            </div>
+
+            <div class="input-group">
+                <label for="percentageTotal">
+                    Total
+                </label>
+                <input type="number" id="percentageTotal"
+                    placeholder="Example: 200">
+            </div>
+
+            <button id="calculatePercentage" class="primary-button">
+                Calculate Percentage
+            </button>
+
+            <button id="clearPercentage" class="secondary-button">
+                Clear
+            </button>
+
+            <div id="percentageResult" class="result">
+                <p>Your percentage will appear here.</p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section class="information-section">
+
+        <h2>How do you calculate a percentage?</h2>
+
+        <p>
+            To find what percentage one number represents of another,
+            divide the part by the total and multiply the result by 100.
+        </p>
+
+        <h2>Example</h2>
+
+        <p>
+            If you have 25 out of 200, the calculation is
+            25 ÷ 200 × 100, which equals 12.5%.
+        </p>
+
+    </section>
+
+
+    <div class="back-home">
+        <a href="index.html">← Back to Student Toolkit</a>
+    </div>
+
+</main>
+
+<footer>
+    <p>© 2026 Student Toolkit</p>
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>
