@@ -898,23 +898,46 @@ quickTargetButtons.forEach(button => {
 
 });
 
+/* ==========================================
+   FEEDBACK FORM
+========================================== */
+
+const feedbackForm =
+    document.getElementById("feedbackForm");
+
+const feedbackMessage =
+    document.getElementById("feedbackMessage");
+
+const feedbackStatus =
+    document.getElementById("feedbackStatus");
 
 
-/* FEEDBACK */
+if (feedbackForm) {
 
-const feedbackButton =
-    document.getElementById("feedbackButton");
+    feedbackForm.addEventListener(
+        "submit",
+        (event) => {
+
+            event.preventDefault();
+
+            const message =
+                feedbackMessage.value.trim();
 
 
-if (feedbackButton) {
+            if (!message) {
 
-    feedbackButton.addEventListener(
-        "click",
-        () => {
+                feedbackStatus.textContent =
+                    "Please write a suggestion first.";
 
-            alert(
-                "Thanks for helping us improve Student Toolkit! Feedback forms are coming soon."
-            );
+                return;
+
+            }
+
+
+            feedbackStatus.textContent =
+                "Thanks! Your suggestion has been recorded for this demo.";
+
+            feedbackMessage.value = "";
 
         }
     );
