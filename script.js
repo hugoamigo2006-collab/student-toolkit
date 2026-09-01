@@ -943,3 +943,315 @@ if (feedbackForm) {
     );
 
 }
+/* =========================
+   GPA CALCULATOR
+========================= */
+
+const coursesContainer = document.getElementById("coursesContainer");
+const addCourseButton = document.getElementById("addCourse");
+const calculateGPAButton = document.getElementById("calculateGPA");
+const clearGPAButton = document.getElementById("clearGPA");
+const gpaResult = document.getElementById("gpaResult");
+
+
+/* ADD COURSE */
+
+if (addCourseButton && coursesContainer) {
+
+    addCourseButton.addEventListener("click", function () {
+
+        const courseRow = document.createElement("div");
+
+        courseRow.className = "course-row";
+
+        courseRow.innerHTML = `
+
+            <div class="course-input">
+
+                <label>
+                    Course name
+                </label>
+
+                <input
+                    type="text"
+                    class="course-name"
+                    placeholder="Example: Mathematics"
+                >
+
+            </div>
+
+
+            <div class="course-input">
+
+                <label>
+                    Grade
+                </label>
+
+                <select class="course-grade">
+
+                    <option value="4.0">A</option>
+                    <option value="3.7">A-</option>
+                    <option value="3.3">B+</option>
+                    <option value="3.0">B</option>
+                    <option value="2.7">B-</option>
+                    <option value="2.3">C+</option>
+                    <option value="2.0">C</option>
+                    <option value="1.7">C-</option>
+                    <option value="1.3">D+</option>
+                    <option value="1.0">D</option>
+                    <option value="0.0">F</option>
+
+                </select>
+
+            </div>
+
+
+            <div class="course-input">
+
+                <label>
+                    Credits
+                </label>
+
+                <input
+                    type="number"
+                    class="course-credits"
+                    placeholder="3"
+                    min="0.1"
+                    step="0.1"
+                >
+
+            </div>
+
+
+            <button
+                type="button"
+                class="remove-course"
+            >
+                ×
+            </button>
+
+        `;
+
+        coursesContainer.appendChild(courseRow);
+
+    });
+
+}
+
+
+/* REMOVE COURSE */
+
+if (coursesContainer) {
+
+    coursesContainer.addEventListener("click", function (event) {
+
+        if (event.target.classList.contains("remove-course")) {
+
+            const rows = coursesContainer.querySelectorAll(".course-row");
+
+            if (rows.length > 1) {
+
+                event.target.closest(".course-row").remove();
+
+            }
+
+        }
+
+    });
+
+}
+
+
+/* CALCULATE GPA */
+
+if (calculateGPAButton) {
+
+    calculateGPAButton.addEventListener("click", function () {
+
+        const courseRows =
+            document.querySelectorAll(".course-row");
+
+        let totalGradePoints = 0;
+        let totalCredits = 0;
+        let validCourses = 0;
+
+        courseRows.forEach(function (row) {
+
+            const grade =
+                parseFloat(
+                    row.querySelector(".course-grade").value
+                );
+
+            const credits =
+                parseFloat(
+                    row.querySelector(".course-credits").value
+                );
+
+            if (!isNaN(grade) && !isNaN(credits) && credits > 0) {
+
+                totalGradePoints += grade * credits;
+
+                totalCredits += credits;
+
+                validCourses++;
+
+            }
+
+        });
+
+
+        if (validCourses === 0 || totalCredits === 0) {
+
+            gpaResult.innerHTML = `
+
+                <div class="result-placeholder">
+
+                    <span class="result-icon">
+                        ⚠️
+                    </span>
+
+                    <p>
+                        Please enter credits for at least one course.
+                    </p>
+
+                </div>
+
+            `;
+
+            return;
+
+        }
+
+
+        const gpa =
+            totalGradePoints / totalCredits;
+
+
+        gpaResult.innerHTML = `
+
+            <div class="result-success">
+
+                <span class="result-icon">
+                    🎓
+                </span>
+
+                <h3>
+                    Your GPA
+                </h3>
+
+                <div class="result-number">
+                    ${gpa.toFixed(2)}
+                </div>
+
+                <p>
+                    Based on ${validCourses} course${validCourses === 1 ? "" : "s"}
+                    and ${totalCredits} total credit${totalCredits === 1 ? "" : "s"}.
+                </p>
+
+            </div>
+
+        `;
+
+    });
+
+}
+
+
+/* CLEAR GPA */
+
+if (clearGPAButton) {
+
+    clearGPAButton.addEventListener("click", function () {
+
+        coursesContainer.innerHTML = `
+
+            <div class="course-row">
+
+                <div class="course-input">
+
+                    <label>
+                        Course name
+                    </label>
+
+                    <input
+                        type="text"
+                        class="course-name"
+                        placeholder="Example: Mathematics"
+                    >
+
+                </div>
+
+
+                <div class="course-input">
+
+                    <label>
+                        Grade
+                    </label>
+
+                    <select class="course-grade">
+
+                        <option value="4.0">A</option>
+                        <option value="3.7">A-</option>
+                        <option value="3.3">B+</option>
+                        <option value="3.0">B</option>
+                        <option value="2.7">B-</option>
+                        <option value="2.3">C+</option>
+                        <option value="2.0">C</option>
+                        <option value="1.7">C-</option>
+                        <option value="1.3">D+</option>
+                        <option value="1.0">D</option>
+                        <option value="0.0">F</option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="course-input">
+
+                    <label>
+                        Credits
+                    </label>
+
+                    <input
+                        type="number"
+                        class="course-credits"
+                        placeholder="3"
+                        min="0.1"
+                        step="0.1"
+                    >
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="remove-course"
+                >
+                    ×
+                </button>
+
+            </div>
+
+        `;
+
+
+        gpaResult.innerHTML = `
+
+            <div class="result-placeholder">
+
+                <span class="result-icon">
+                    📊
+                </span>
+
+                <p>
+                    Your GPA will appear here.
+                </p>
+
+            </div>
+
+        `;
+
+    });
+
+}
