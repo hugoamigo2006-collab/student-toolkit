@@ -2,7 +2,9 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Attendance Calculator - Student Toolkit</title>
@@ -11,64 +13,124 @@
         content="Calculate your attendance percentage and find out how many classes you can miss.">
 
     <link rel="stylesheet" href="style.css">
+
 </head>
+
 
 <body>
 
+
 <header>
+
     <div class="header-content">
-        <a href="index.html" class="logo">Student Toolkit</a>
-        <p>Free tools to make student life easier.</p>
+
+        <a href="index.html" class="logo">
+            Student Toolkit
+        </a>
+
+        <p>
+            Free tools to make student life easier.
+        </p>
+
     </div>
+
 </header>
 
+
+
 <main>
+
+
+    <!-- CALCULATOR -->
 
     <section class="calculator-section">
 
         <div class="calculator-card">
 
-            <h1>Attendance Calculator</h1>
+            <h1>
+                Attendance Calculator
+            </h1>
 
             <p class="calculator-description">
                 Calculate your attendance percentage and see how
                 many classes you can miss.
             </p>
 
+
             <div class="input-group">
+
                 <label for="totalClasses">
                     Total Classes
                 </label>
-                <input type="number" id="totalClasses"
-                    placeholder="Example: 40" min="1">
+
+                <input
+                    type="number"
+                    id="totalClasses"
+                    placeholder="Example: 40"
+                    min="1"
+                >
+
             </div>
 
+
             <div class="input-group">
+
                 <label for="missedClasses">
                     Classes Already Missed
                 </label>
-                <input type="number" id="missedClasses"
-                    placeholder="Example: 3" min="0">
+
+                <input
+                    type="number"
+                    id="missedClasses"
+                    placeholder="Example: 3"
+                    min="0"
+                >
+
             </div>
 
+
             <div class="input-group">
+
                 <label for="requiredAttendance">
                     Required Attendance (%)
                 </label>
-                <input type="number" id="requiredAttendance"
-                    placeholder="Example: 80" min="0" max="100">
+
+                <input
+                    type="number"
+                    id="requiredAttendance"
+                    placeholder="Example: 80"
+                    min="0"
+                    max="100"
+                >
+
             </div>
 
-            <button id="calculateAttendance" class="primary-button">
+
+            <button
+                id="calculateAttendance"
+                class="primary-button"
+            >
                 Calculate
             </button>
 
-            <button id="clearAttendance" class="secondary-button">
+
+            <button
+                id="clearAttendance"
+                class="secondary-button"
+            >
                 Clear
             </button>
 
-            <div id="attendanceResult" class="result">
-                <p>Your attendance result will appear here.</p>
+
+            <div
+                id="attendanceResult"
+                class="result"
+            >
+
+                <p>
+                    Your attendance result will appear here.
+                </p>
+
             </div>
 
         </div>
@@ -76,16 +138,24 @@
     </section>
 
 
+
+    <!-- INFORMATION -->
+
     <section class="information-section">
 
-        <h2>Why is attendance important?</h2>
+        <h2>
+            Why is attendance important?
+        </h2>
 
         <p>
             Many schools and universities require students to maintain
             a minimum attendance percentage for their courses.
         </p>
 
-        <h2>How does the calculator work?</h2>
+
+        <h2>
+            How does the calculator work?
+        </h2>
 
         <p>
             Enter the total number of classes, the number of classes
@@ -96,17 +166,68 @@
     </section>
 
 
+
+    <!-- MORE STUDENT TOOLS -->
+
+    <section class="other-tools">
+
+        <h2>
+            More Student Tools
+        </h2>
+
+
+        <div class="other-tools-grid">
+
+            <a href="final-grade-calculator.html">
+                🎓 Final Grade Calculator
+            </a>
+
+            <a href="gpa-calculator.html">
+                📊 GPA Calculator
+            </a>
+
+            <a href="grade-calculator.html">
+                📝 Grade Calculator
+            </a>
+
+            <a href="percentage-calculator.html">
+                % Percentage Calculator
+            </a>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- BACK HOME -->
+
     <div class="back-home">
-        <a href="index.html">← Back to Student Toolkit</a>
+
+        <a href="index.html">
+            ← Back to Student Toolkit
+        </a>
+
     </div>
+
 
 </main>
 
+
+
 <footer>
-    <p>© 2026 Student Toolkit</p>
+
+    <p>
+        © 2026 Student Toolkit
+    </p>
+
 </footer>
+
+
 
 <script src="script.js"></script>
 
+
 </body>
+
 </html>
