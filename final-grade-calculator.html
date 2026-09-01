@@ -558,35 +558,58 @@
 
 
     <!-- FEEDBACK -->
+<section class="feedback-card">
 
-    <section class="feedback-card">
+    <div>
 
-        <div>
+        <span class="feedback-icon">
+            💡
+        </span>
 
-            <span class="feedback-icon">
-                💡
-            </span>
+        <h2>
+            Help us improve Student Toolkit
+        </h2>
 
-            <h2>
-                Help us improve Student Toolkit
-            </h2>
+        <p>
+            Found something confusing, incorrect or missing?
+            We'd love to hear your ideas.
+        </p>
 
-            <p>
-                Found something confusing, incorrect or missing?
-                We'd love to hear your ideas.
-            </p>
+    </div>
 
-        </div>
 
+    <form
+        id="feedbackForm"
+        class="feedback-form"
+    >
+
+        <label for="feedbackMessage">
+            Your suggestion
+        </label>
+
+        <textarea
+            id="feedbackMessage"
+            name="feedbackMessage"
+            placeholder="Tell us what we could improve..."
+            maxlength="1000"
+            required
+        ></textarea>
 
         <button
-            id="feedbackButton"
+            type="submit"
             class="feedback-button"
         >
-            Suggest an improvement
+            Send suggestion
         </button>
 
-    </section>
+        <p
+            id="feedbackStatus"
+            class="feedback-status"
+        ></p>
+
+    </form>
+
+</section>
 
 
 
