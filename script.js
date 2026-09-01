@@ -558,3 +558,365 @@ if (calculatePercentage) {
         });
 
 }
+/* ==========================================
+   FINAL GRADE CALCULATOR
+========================================== */
+
+const currentGradeInput = document.getElementById("currentGrade");
+const finalWeightInput = document.getElementById("finalWeight");
+const targetGradeInput = document.getElementById("targetGrade");
+
+const calculateFinalGradeButton =
+    document.getElementById("calculateFinalGrade");
+
+const clearFinalGradeButton =
+    document.getElementById("clearFinalGrade");
+
+const finalGradeResult =
+    document.getElementById("finalGradeResult");
+
+const scenarioSection =
+    document.getElementById("scenarioSection");
+
+const scenarioTableBody =
+    document.getElementById("scenarioTableBody");
+
+const maximumGradeResult =
+    document.getElementById("maximumGradeResult");
+
+const minimumGradeResult =
+    document.getElementById("minimumGradeResult");
+
+
+function calculateRequiredFinalGrade() {
+
+    const currentGrade =
+        parseFloat(currentGradeInput.value);
+
+    const finalWeight =
+        parseFloat(finalWeightInput.value);
+
+    const targetGrade =
+        parseFloat(targetGradeInput.value);
+
+
+    if (
+        isNaN(currentGrade) ||
+        isNaN(finalWeight) ||
+        isNaN(targetGrade)
+    ) {
+
+        finalGradeResult.innerHTML = `
+            <div class="error-result">
+                <span>⚠️</span>
+                <p>
+                    Please enter all three values before calculating.
+                </p>
+            </div>
+        `;
+
+        return;
+    }
+
+
+    if (
+        currentGrade < 0 ||
+        currentGrade > 100 ||
+        finalWeight <= 0 ||
+        finalWeight > 100 ||
+        targetGrade < 0 ||
+        targetGrade > 100
+    ) {
+
+        finalGradeResult.innerHTML = `
+            <div class="error-result">
+                <span>⚠️</span>
+                <p>
+                    Please enter valid values between 0 and 100.
+                </p>
+            </div>
+        `;
+
+        return;
+    }
+
+
+    const weight =
+        finalWeight / 100;
+
+
+    const requiredGrade =
+        (
+            targetGrade -
+            currentGrade * (1 - weight)
+        ) / weight;
+
+
+    const maximumGrade =
+        currentGrade * (1 - weight) +
+        100 * weight;
+
+
+    const minimumGrade =
+        currentGrade * (1 - weight);
+
+
+    maximumGradeResult.innerHTML = `
+        <strong>
+            ${maximumGrade.toFixed(1)}%
+        </strong>
+        <span>
+            Maximum possible course grade
+        </span>
+    `;
+
+
+    minimumGradeResult.innerHTML = `
+        <strong>
+            ${minimumGrade.toFixed(1)}%
+        </strong>
+        <span>
+            Course grade if you score 0% on the final
+        </span>
+    `;
+
+
+    let resultClass = "success-result";
+    let resultTitle = "You need";
+    let resultMessage = "";
+
+
+    if (requiredGrade > 100) {
+
+        resultClass = "warning-result";
+
+        resultTitle =
+            "That target is out of reach";
+
+        resultMessage = `
+            You would need
+            <strong>${requiredGrade.toFixed(1)}%</strong>
+            on the final.
+
+            Even with a perfect 100% on the final,
+            your highest possible course grade is
+            <strong>${maximumGrade.toFixed(1)}%</strong>.
+        `;
+
+    } else if (requiredGrade <= 0) {
+
+        resultClass = "success-result";
+
+        resultTitle =
+            "You've already secured your target";
+
+        resultMessage = `
+            Your current grade is already high enough
+            to reach your target, even with a 0% on the final.
+        `;
+
+    } else {
+
+        resultMessage = `
+            You need at least
+            <strong>${requiredGrade.toFixed(1)}%</strong>
+            on your final exam to finish with
+            <strong>${targetGrade.toFixed(1)}%</strong>.
+        `;
+    }
+
+
+    finalGradeResult.innerHTML = `
+
+        <div class="${resultClass}">
+
+            <span class="result-small-title">
+                ${resultTitle}
+            </span>
+
+            ${
+                requiredGrade > 100 ||
+                requiredGrade <= 0
+                    ? ""
+                    : `
+                        <span class="big-result">
+                            ${requiredGrade.toFixed(1)}%
+                        </span>
+                    `
+            }
+
+            <p>
+                ${resultMessage}
+            </p>
+
+        </div>
+    `;
+
+
+    generateScenarioTable(
+        currentGrade,
+        weight
+    );
+
+
+    scenarioSection.classList.remove("hidden");
+}
+
+
+
+function generateScenarioTable(
+    currentGrade,
+    weight
+) {
+
+    const scores = [
+        50,
+        60,
+        70,
+        75,
+        80,
+        85,
+        90,
+        95,
+        100
+    ];
+
+
+    scenarioTableBody.innerHTML = "";
+
+
+    scores.forEach(score => {
+
+        const finalCourseGrade =
+            currentGrade * (1 - weight) +
+            score * weight;
+
+
+        const row =
+            document.createElement("tr");
+
+
+        row.innerHTML = `
+            <td>
+                ${score}%
+            </td>
+
+            <td>
+                <strong>
+                    ${finalCourseGrade.toFixed(1)}%
+                </strong>
+            </td>
+        `;
+
+
+        scenarioTableBody.appendChild(row);
+
+    });
+
+}
+
+
+
+if (calculateFinalGradeButton) {
+
+    calculateFinalGradeButton.addEventListener(
+        "click",
+        calculateRequiredFinalGrade
+    );
+
+}
+
+
+
+if (clearFinalGradeButton) {
+
+    clearFinalGradeButton.addEventListener(
+        "click",
+        () => {
+
+            currentGradeInput.value = "";
+            finalWeightInput.value = "";
+            targetGradeInput.value = "";
+
+            finalGradeResult.innerHTML = `
+                <div class="result-placeholder">
+
+                    <span class="result-icon">
+                        🎯
+                    </span>
+
+                    <p>
+                        Your required final exam score
+                        will appear here.
+                    </p>
+
+                </div>
+            `;
+
+
+            scenarioSection.classList.add("hidden");
+
+
+            maximumGradeResult.innerHTML =
+                "Enter your grades above to see your maximum possible course grade.";
+
+
+            minimumGradeResult.innerHTML =
+                "Enter your grades above to see your minimum possible course grade.";
+
+        }
+    );
+
+}
+
+
+
+/* QUICK TARGET BUTTONS */
+
+const quickTargetButtons =
+    document.querySelectorAll(
+        ".quick-targets button"
+    );
+
+
+quickTargetButtons.forEach(button => {
+
+    button.addEventListener(
+        "click",
+        () => {
+
+            const target =
+                button.dataset.target;
+
+            targetGradeInput.value =
+                target;
+
+            targetGradeInput.focus();
+
+        }
+    );
+
+});
+
+
+
+/* FEEDBACK */
+
+const feedbackButton =
+    document.getElementById("feedbackButton");
+
+
+if (feedbackButton) {
+
+    feedbackButton.addEventListener(
+        "click",
+        () => {
+
+            alert(
+                "Thanks for helping us improve Student Toolkit! Feedback forms are coming soon."
+            );
+
+        }
+    );
+
+}
