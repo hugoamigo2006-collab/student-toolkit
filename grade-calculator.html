@@ -2,136 +2,918 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Grade Calculator - Student Toolkit</title>
+    <title>Grade Calculator - Calculate Your Current Grade | Student Toolkit</title>
 
     <meta name="description"
-        content="Calculate your current course grade using assignment scores and weights.">
+        content="Calculate your current course grade using assignments, exams, projects and their weights. Free and easy grade calculator for students.">
 
-    <link rel="stylesheet" href="style.css">
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f7fb;
+            color: #17233c;
+            line-height: 1.6;
+        }
+
+        header {
+            background: white;
+            padding: 28px 20px;
+            text-align: center;
+            border-bottom: 1px solid #e5e9f0;
+        }
+
+        .logo {
+            color: #17233c;
+            text-decoration: none;
+            font-size: 24px;
+            font-weight: 800;
+        }
+
+        header p {
+            margin: 6px 0 0;
+            color: #65728a;
+        }
+
+        main {
+            max-width: 1000px;
+            margin: auto;
+            padding: 40px 20px 70px;
+        }
+
+        .hero {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .badge {
+            display: inline-block;
+            background: #e9f1ff;
+            color: #2463d4;
+            padding: 7px 14px;
+            border-radius: 999px;
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            font-size: clamp(34px, 6vw, 52px);
+            margin: 0 0 12px;
+        }
+
+        .hero p {
+            max-width: 650px;
+            margin: auto;
+            color: #66738a;
+            font-size: 18px;
+        }
+
+        .calculator-card,
+        .content-card {
+            background: white;
+            border-radius: 22px;
+            padding: 30px;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 30px rgba(30, 50, 80, 0.08);
+        }
+
+        .calculator-card h2,
+        .content-card h2 {
+            margin-top: 0;
+            font-size: 27px;
+        }
+
+        .intro {
+            margin-bottom: 25px;
+        }
+
+        .intro p,
+        .content-card p {
+            color: #66738a;
+        }
+
+        .assignment {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr auto;
+            gap: 12px;
+            align-items: end;
+            margin-bottom: 12px;
+        }
+
+        .field label {
+            display: block;
+            font-weight: 700;
+            margin-bottom: 6px;
+            font-size: 14px;
+        }
+
+        .field input {
+            width: 100%;
+            padding: 13px 14px;
+            border: 1px solid #d6dce6;
+            border-radius: 10px;
+            font-size: 16px;
+            outline: none;
+        }
+
+        .field input:focus {
+            border-color: #3778e8;
+            box-shadow: 0 0 0 3px rgba(55, 120, 232, 0.12);
+        }
+
+        .remove-button {
+            border: none;
+            background: #ffe9e9;
+            color: #c62828;
+            padding: 13px 15px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 700;
+        }
+
+        .remove-button:hover {
+            background: #ffdada;
+        }
+
+        .add-button {
+            width: 100%;
+            border: 2px dashed #b8c7dd;
+            background: #f8faff;
+            color: #2463d4;
+            padding: 14px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 700;
+            margin: 12px 0 20px;
+        }
+
+        .add-button:hover {
+            background: #eef5ff;
+        }
+
+        .calculate-button {
+            width: 100%;
+            border: none;
+            background: #2463d4;
+            color: white;
+            padding: 16px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 17px;
+            font-weight: 800;
+        }
+
+        .calculate-button:hover {
+            background: #1855c0;
+        }
+
+        .result {
+            margin-top: 25px;
+            padding: 25px;
+            border-radius: 16px;
+            background: #f1f7ff;
+            text-align: center;
+            display: none;
+        }
+
+        .result.visible {
+            display: block;
+        }
+
+        .result-label {
+            color: #66738a;
+            font-size: 15px;
+        }
+
+        .result-number {
+            font-size: 48px;
+            font-weight: 900;
+            margin: 5px 0;
+        }
+
+        .result-letter {
+            font-size: 22px;
+            font-weight: 800;
+        }
+
+        .weight-warning {
+            margin-top: 15px;
+            padding: 12px;
+            border-radius: 10px;
+            background: #fff5df;
+            color: #8a5a00;
+            display: none;
+        }
+
+        .weight-warning.visible {
+            display: block;
+        }
+
+        .formula {
+            background: #f5f7fb;
+            padding: 20px;
+            border-radius: 14px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: 700;
+            overflow-x: auto;
+        }
+
+        .example {
+            background: #eef6ff;
+            padding: 20px;
+            border-radius: 14px;
+        }
+
+        .tools {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .tools a {
+            display: inline-block;
+            margin: 7px;
+            padding: 12px 16px;
+            background: white;
+            border-radius: 10px;
+            color: #2463d4;
+            text-decoration: none;
+            font-weight: 700;
+            box-shadow: 0 4px 15px rgba(30, 50, 80, 0.06);
+        }
+
+        .tools a:hover {
+            background: #eef5ff;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #718096;
+        }
+
+        @media (max-width: 700px) {
+
+            main {
+                padding: 25px 14px 50px;
+            }
+
+            .calculator-card,
+            .content-card {
+                padding: 20px;
+                border-radius: 17px;
+            }
+
+            .assignment {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .assignment .field:first-child {
+                grid-column: 1 / -1;
+            }
+
+            .remove-button {
+                width: 100%;
+            }
+
+            h1 {
+                font-size: 36px;
+            }
+
+        }
+
+    </style>
+
 </head>
+
 
 <body>
 
+
 <header>
-    <div class="header-content">
-        <a href="index.html" class="logo">Student Toolkit</a>
-        <p>Free tools to make student life easier.</p>
-    </div>
+
+    <a href="index.html" class="logo">
+        🎓 Student Toolkit
+    </a>
+
+    <p>
+        Free tools to make student life easier.
+    </p>
+
 </header>
+
+
 
 <main>
 
-    <section class="calculator-section">
 
-        <div class="calculator-card">
+    <!-- HERO -->
 
-            <h1>Grade Calculator</h1>
+    <section class="hero">
 
-            <p class="calculator-description">
-                Calculate your current course grade using assignment
-                scores and their weights.
+        <div class="badge">
+            📊 Student Tool
+        </div>
+
+        <h1>
+            Grade Calculator
+        </h1>
+
+        <p>
+            Calculate your current course grade using your
+            assignments, exams, projects and their weights.
+        </p>
+
+    </section>
+
+
+
+    <!-- CALCULATOR -->
+
+    <section class="calculator-card">
+
+        <div class="intro">
+
+            <h2>
+                Calculate your current grade
+            </h2>
+
+            <p>
+                Add each assignment or exam, enter your grade
+                and its percentage of the course.
             </p>
 
-            <div class="input-group">
-                <label for="assignmentGrade1">
-                    Assignment 1 Grade (%)
-                </label>
-                <input type="number" id="assignmentGrade1"
-                    placeholder="Example: 85" min="0" max="100">
+        </div>
+
+
+        <div id="assignments">
+
+
+            <div class="assignment">
+
+                <div class="field">
+
+                    <label>
+                        Assignment
+                    </label>
+
+                    <input
+                        type="text"
+                        class="assignment-name"
+                        placeholder="Example: Midterm"
+                    >
+
+                </div>
+
+
+                <div class="field">
+
+                    <label>
+                        Grade (%)
+                    </label>
+
+                    <input
+                        type="number"
+                        class="assignment-grade"
+                        placeholder="85"
+                        min="0"
+                        max="100"
+                        step="0.1"
+                    >
+
+                </div>
+
+
+                <div class="field">
+
+                    <label>
+                        Weight (%)
+                    </label>
+
+                    <input
+                        type="number"
+                        class="assignment-weight"
+                        placeholder="30"
+                        min="0"
+                        max="100"
+                        step="0.1"
+                    >
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="remove-button"
+                    onclick="removeAssignment(this)"
+                >
+                    Remove
+                </button>
+
             </div>
 
-            <div class="input-group">
-                <label for="assignmentWeight1">
-                    Assignment 1 Weight (%)
-                </label>
-                <input type="number" id="assignmentWeight1"
-                    placeholder="Example: 20" min="0" max="100">
+
+        </div>
+
+
+
+        <button
+            type="button"
+            class="add-button"
+            onclick="addAssignment()"
+        >
+            + Add another assignment
+        </button>
+
+
+
+        <button
+            type="button"
+            class="calculate-button"
+            onclick="calculateGrade()"
+        >
+            Calculate My Grade
+        </button>
+
+
+
+        <div
+            id="weightWarning"
+            class="weight-warning"
+        >
+        </div>
+
+
+
+        <div
+            id="result"
+            class="result"
+        >
+
+            <div class="result-label">
+                Your current course grade
             </div>
 
-            <div class="input-group">
-                <label for="assignmentGrade2">
-                    Assignment 2 Grade (%)
-                </label>
-                <input type="number" id="assignmentGrade2"
-                    placeholder="Example: 90" min="0" max="100">
+            <div
+                id="resultNumber"
+                class="result-number"
+            >
+                0%
             </div>
 
-            <div class="input-group">
-                <label for="assignmentWeight2">
-                    Assignment 2 Weight (%)
-                </label>
-                <input type="number" id="assignmentWeight2"
-                    placeholder="Example: 30" min="0" max="100">
+            <div
+                id="resultLetter"
+                class="result-letter"
+            >
             </div>
 
-            <div class="input-group">
-                <label for="assignmentGrade3">
-                    Assignment 3 Grade (%)
-                </label>
-                <input type="number" id="assignmentGrade3"
-                    placeholder="Example: 80" min="0" max="100">
-            </div>
+        </div>
 
-            <div class="input-group">
-                <label for="assignmentWeight3">
-                    Assignment 3 Weight (%)
-                </label>
-                <input type="number" id="assignmentWeight3"
-                    placeholder="Example: 50" min="0" max="100">
-            </div>
 
-            <button id="calculateGrade" class="primary-button">
-                Calculate Grade
-            </button>
+    </section>
 
-            <button id="clearGrade" class="secondary-button">
-                Clear
-            </button>
 
-            <div id="gradeResult" class="result">
-                <p>Your current course grade will appear here.</p>
-            </div>
+
+    <!-- HOW IT WORKS -->
+
+    <section class="content-card">
+
+        <h2>
+            How does the Grade Calculator work?
+        </h2>
+
+        <p>
+            Each assignment contributes to your final course grade
+            according to its percentage weight.
+        </p>
+
+        <p>
+            For example, if a midterm is worth 30% of your course
+            and you receive 80%, that midterm contributes 24 points
+            toward your overall grade.
+        </p>
+
+    </section>
+
+
+
+    <!-- FORMULA -->
+
+    <section class="content-card">
+
+        <h2>
+            Grade Calculator Formula
+        </h2>
+
+        <p>
+            A weighted grade is calculated by multiplying each grade
+            by its weight and then adding all the results together.
+        </p>
+
+        <div class="formula">
+
+            Overall Grade =
+            (Grade₁ × Weight₁) +
+            (Grade₂ × Weight₂) +
+            (Grade₃ × Weight₃) + ...
+
+        </div>
+
+        <p>
+            Remember that the weights should normally add up to
+            100% when calculating a complete course grade.
+        </p>
+
+    </section>
+
+
+
+    <!-- EXAMPLE -->
+
+    <section class="content-card">
+
+        <h2>
+            Example
+        </h2>
+
+        <div class="example">
+
+            <p>
+                Imagine you have three assessments:
+            </p>
+
+            <p>
+                <strong>Homework:</strong> 90% × 20%
+            </p>
+
+            <p>
+                <strong>Midterm:</strong> 80% × 30%
+            </p>
+
+            <p>
+                <strong>Project:</strong> 95% × 50%
+            </p>
+
+            <p>
+                Your weighted course grade would be:
+            </p>
+
+            <p>
+                (90 × 0.20) + (80 × 0.30) + (95 × 0.50)
+                = <strong>90.5%</strong>
+            </p>
 
         </div>
 
     </section>
 
 
-    <section class="information-section">
 
-        <h2>What is a weighted grade?</h2>
+    <!-- FAQ -->
+
+    <section class="content-card">
+
+        <h2>
+            Frequently Asked Questions
+        </h2>
+
+
+        <h3>
+            What if my weights do not add up to 100%?
+        </h3>
 
         <p>
-            A weighted grade gives different assignments, exams,
-            projects, or activities different levels of importance
-            toward your final course grade.
+            If you have not entered every assignment in the course,
+            your weights may be below 100%. The calculator will still
+            calculate the weighted average of the grades you entered.
         </p>
 
-        <h2>How does it work?</h2>
+
+        <h3>
+            What if I have many assignments?
+        </h3>
 
         <p>
-            Enter each assignment's score and its percentage of the
-            total course grade. The calculator combines the weighted
-            scores to determine your current grade.
+            Simply use the "Add another assignment" button to add
+            as many assignments as you need.
+        </p>
+
+
+        <h3>
+            Does this work for exams and projects?
+        </h3>
+
+        <p>
+            Yes. You can use the calculator for exams, homework,
+            projects, quizzes, presentations, labs and other
+            graded activities.
         </p>
 
     </section>
 
 
-    <div class="back-home">
-        <a href="index.html">← Back to Student Toolkit</a>
-    </div>
+
+    <!-- OTHER TOOLS -->
+
+    <section class="tools">
+
+        <h2>
+            More Student Tools
+        </h2>
+
+        <a href="final-grade-calculator.html">
+            🎯 Final Grade Calculator
+        </a>
+
+        <a href="gpa-calculator.html">
+            📊 GPA Calculator
+        </a>
+
+        <a href="attendance-calculator.html">
+            📅 Attendance Calculator
+        </a>
+
+        <a href="percentage-calculator.html">
+            % Percentage Calculator
+        </a>
+
+        <a href="index.html">
+            🏠 Student Toolkit Home
+        </a>
+
+    </section>
+
 
 </main>
 
+
+
 <footer>
-    <p>© 2026 Student Toolkit</p>
+
+    © 2026 Student Toolkit
+
 </footer>
 
-<script src="script.js"></script>
+
+
+<script>
+
+    function addAssignment() {
+
+        const container = document.getElementById("assignments");
+
+        const assignment = document.createElement("div");
+
+        assignment.className = "assignment";
+
+        assignment.innerHTML = `
+
+            <div class="field">
+
+                <label>
+                    Assignment
+                </label>
+
+                <input
+                    type="text"
+                    class="assignment-name"
+                    placeholder="Example: Homework"
+                >
+
+            </div>
+
+
+            <div class="field">
+
+                <label>
+                    Grade (%)
+                </label>
+
+                <input
+                    type="number"
+                    class="assignment-grade"
+                    placeholder="85"
+                    min="0"
+                    max="100"
+                    step="0.1"
+                >
+
+            </div>
+
+
+            <div class="field">
+
+                <label>
+                    Weight (%)
+                </label>
+
+                <input
+                    type="number"
+                    class="assignment-weight"
+                    placeholder="20"
+                    min="0"
+                    max="100"
+                    step="0.1"
+                >
+
+            </div>
+
+
+            <button
+                type="button"
+                class="remove-button"
+                onclick="removeAssignment(this)"
+            >
+                Remove
+            </button>
+
+        `;
+
+        container.appendChild(assignment);
+
+    }
+
+
+
+    function removeAssignment(button) {
+
+        const assignments =
+            document.querySelectorAll(".assignment");
+
+        if (assignments.length <= 1) {
+
+            alert("You need at least one assignment.");
+
+            return;
+
+        }
+
+        button.parentElement.remove();
+
+    }
+
+
+
+    function calculateGrade() {
+
+        const grades =
+            document.querySelectorAll(".assignment-grade");
+
+        const weights =
+            document.querySelectorAll(".assignment-weight");
+
+        let weightedTotal = 0;
+
+        let totalWeight = 0;
+
+        let validEntries = 0;
+
+
+        for (let i = 0; i < grades.length; i++) {
+
+            const grade =
+                parseFloat(grades[i].value);
+
+            const weight =
+                parseFloat(weights[i].value);
+
+
+            if (
+                Number.isNaN(grade) ||
+                Number.isNaN(weight)
+            ) {
+
+                continue;
+
+            }
+
+
+            if (
+                grade < 0 ||
+                grade > 100 ||
+                weight < 0
+            ) {
+
+                alert("Please enter valid grades and weights.");
+
+                return;
+
+            }
+
+
+            weightedTotal += grade * (weight / 100);
+
+            totalWeight += weight;
+
+            validEntries++;
+
+        }
+
+
+        if (validEntries === 0) {
+
+            alert("Please enter at least one grade and weight.");
+
+            return;
+
+        }
+
+
+        const result =
+            weightedTotal / (totalWeight / 100);
+
+
+        document.getElementById("resultNumber").textContent =
+            result.toFixed(1) + "%";
+
+
+        document.getElementById("resultLetter").textContent =
+            getLetterGrade(result);
+
+
+        document
+            .getElementById("result")
+            .classList
+            .add("visible");
+
+
+        const warning =
+            document.getElementById("weightWarning");
+
+
+        if (totalWeight < 99.9) {
+
+            warning.textContent =
+                "You have entered " +
+                totalWeight.toFixed(1) +
+                "% of the course. Your result is the weighted average of the grades entered so far.";
+
+            warning.classList.add("visible");
+
+        } else if (totalWeight > 100.1) {
+
+            warning.textContent =
+                "Your assignment weights add up to " +
+                totalWeight.toFixed(1) +
+                "%. Please check your weights.";
+
+            warning.classList.add("visible");
+
+        } else {
+
+            warning.classList.remove("visible");
+
+        }
+
+    }
+
+
+
+    function getLetterGrade(grade) {
+
+        if (grade >= 90) {
+
+            return "A";
+
+        }
+
+        if (grade >= 80) {
+
+            return "B";
+
+        }
+
+        if (grade >= 70) {
+
+            return "C";
+
+        }
+
+        if (grade >= 60) {
+
+            return "D";
+
+        }
+
+        return "F";
+
+    }
+
+</script>
+
 
 </body>
+
 </html>
