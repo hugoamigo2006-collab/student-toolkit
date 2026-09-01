@@ -2,569 +2,14 @@
    FINAL GRADE CALCULATOR
 ========================================== */
 
-const calculateFinalGrade =
-    document.getElementById("calculateFinalGrade");
+const currentGradeInput =
+    document.getElementById("currentGrade");
 
+const finalWeightInput =
+    document.getElementById("finalWeight");
 
-if (calculateFinalGrade) {
-
-    const clearFinalGrade =
-        document.getElementById("clearFinalGrade");
-
-
-    calculateFinalGrade.addEventListener("click", function () {
-
-        const currentGrade =
-            parseFloat(document.getElementById("currentGrade").value);
-
-        const completedWeight =
-            parseFloat(document.getElementById("completedWeight").value);
-
-        const desiredGrade =
-            parseFloat(document.getElementById("desiredGrade").value);
-
-        const result =
-            document.getElementById("finalGradeResult");
-
-
-        if (
-            isNaN(currentGrade) ||
-            isNaN(completedWeight) ||
-            isNaN(desiredGrade)
-        ) {
-
-            result.innerHTML =
-                "<p>Please fill in all the fields.</p>";
-
-            return;
-        }
-
-
-        if (
-            currentGrade < 0 ||
-            currentGrade > 100 ||
-            completedWeight <= 0 ||
-            completedWeight >= 100 ||
-            desiredGrade < 0 ||
-            desiredGrade > 100
-        ) {
-
-            result.innerHTML =
-                "<p>Please enter valid values.</p>";
-
-            return;
-        }
-
-
-        const finalWeight =
-            100 - completedWeight;
-
-
-        const required =
-            (
-                desiredGrade -
-                (currentGrade * completedWeight / 100)
-            ) /
-            (finalWeight / 100);
-
-
-        const rounded =
-            Math.round(required * 100) / 100;
-
-
-        if (rounded > 100) {
-
-            result.innerHTML = `
-                <p>
-                    You need <strong>${rounded}%</strong>
-                    on your final exam.
-                </p>
-
-                <p>
-                    Unfortunately, this is above 100%.
-                    Your desired final grade is not possible.
-                </p>
-            `;
-
-        }
-
-        else if (rounded <= 0) {
-
-            result.innerHTML = `
-                <p>
-                    You already have enough points
-                    to achieve your desired grade.
-                </p>
-            `;
-
-        }
-
-        else {
-
-            result.innerHTML = `
-                <p>
-                    You need
-                    <strong>${rounded}%</strong>
-                    on your final exam.
-                </p>
-
-                <p>
-                    to finish with
-                    <strong>${desiredGrade}%</strong>.
-                </p>
-            `;
-
-        }
-
-    });
-
-
-    clearFinalGrade.addEventListener("click", function () {
-
-        document.getElementById("currentGrade").value = "";
-
-        document.getElementById("completedWeight").value = "";
-
-        document.getElementById("desiredGrade").value = "";
-
-
-        document.getElementById("finalGradeResult").innerHTML =
-            "<p>Your required final exam grade will appear here.</p>";
-
-    });
-
-}
-
-
-
-/* ==========================================
-   GPA CALCULATOR
-========================================== */
-
-const calculateGPA =
-    document.getElementById("calculateGPA");
-
-
-if (calculateGPA) {
-
-    calculateGPA.addEventListener("click", function () {
-
-        const grade1 =
-            parseFloat(document.getElementById("gpaGrade1").value);
-
-        const credits1 =
-            parseFloat(document.getElementById("gpaCredits1").value);
-
-        const grade2 =
-            parseFloat(document.getElementById("gpaGrade2").value);
-
-        const credits2 =
-            parseFloat(document.getElementById("gpaCredits2").value);
-
-        const grade3 =
-            parseFloat(document.getElementById("gpaGrade3").value);
-
-        const credits3 =
-            parseFloat(document.getElementById("gpaCredits3").value);
-
-
-        const result =
-            document.getElementById("gpaResult");
-
-
-        if (
-            isNaN(grade1) ||
-            isNaN(credits1) ||
-            isNaN(grade2) ||
-            isNaN(credits2) ||
-            isNaN(grade3) ||
-            isNaN(credits3)
-        ) {
-
-            result.innerHTML =
-                "<p>Please fill in all the fields.</p>";
-
-            return;
-        }
-
-
-        const totalCredits =
-            credits1 + credits2 + credits3;
-
-
-        if (totalCredits <= 0) {
-
-            result.innerHTML =
-                "<p>Please enter valid credit values.</p>";
-
-            return;
-        }
-
-
-        const gpa =
-            (
-                grade1 * credits1 +
-                grade2 * credits2 +
-                grade3 * credits3
-            ) / totalCredits;
-
-
-        const rounded =
-            Math.round(gpa * 100) / 100;
-
-
-        result.innerHTML = `
-            <p>Your GPA is</p>
-
-            <strong>${rounded}</strong>
-
-            <p>out of 4.00</p>
-        `;
-
-    });
-
-
-    document.getElementById("clearGPA")
-        .addEventListener("click", function () {
-
-            document.getElementById("gpaGrade1").value = "";
-            document.getElementById("gpaCredits1").value = "";
-
-            document.getElementById("gpaGrade2").value = "";
-            document.getElementById("gpaCredits2").value = "";
-
-            document.getElementById("gpaGrade3").value = "";
-            document.getElementById("gpaCredits3").value = "";
-
-            document.getElementById("gpaResult").innerHTML =
-                "<p>Your GPA will appear here.</p>";
-
-        });
-
-}
-
-
-
-/* ==========================================
-   GRADE CALCULATOR
-========================================== */
-
-const calculateGrade =
-    document.getElementById("calculateGrade");
-
-
-if (calculateGrade) {
-
-    calculateGrade.addEventListener("click", function () {
-
-        const grade1 =
-            parseFloat(document.getElementById("assignmentGrade1").value);
-
-        const weight1 =
-            parseFloat(document.getElementById("assignmentWeight1").value);
-
-        const grade2 =
-            parseFloat(document.getElementById("assignmentGrade2").value);
-
-        const weight2 =
-            parseFloat(document.getElementById("assignmentWeight2").value);
-
-        const grade3 =
-            parseFloat(document.getElementById("assignmentGrade3").value);
-
-        const weight3 =
-            parseFloat(document.getElementById("assignmentWeight3").value);
-
-
-        const result =
-            document.getElementById("gradeResult");
-
-
-        if (
-            isNaN(grade1) ||
-            isNaN(weight1) ||
-            isNaN(grade2) ||
-            isNaN(weight2) ||
-            isNaN(grade3) ||
-            isNaN(weight3)
-        ) {
-
-            result.innerHTML =
-                "<p>Please fill in all the fields.</p>";
-
-            return;
-        }
-
-
-        const totalWeight =
-            weight1 + weight2 + weight3;
-
-
-        if (Math.abs(totalWeight - 100) > 0.01) {
-
-            result.innerHTML = `
-                <p>
-                    Your assignment weights must add up to
-                    <strong>100%</strong>.
-                </p>
-
-                <p>
-                    Current total: ${totalWeight}%
-                </p>
-            `;
-
-            return;
-        }
-
-
-        const finalGrade =
-            (
-                grade1 * weight1 +
-                grade2 * weight2 +
-                grade3 * weight3
-            ) / 100;
-
-
-        const rounded =
-            Math.round(finalGrade * 100) / 100;
-
-
-        result.innerHTML = `
-            <p>Your current course grade is</p>
-
-            <strong>${rounded}%</strong>
-        `;
-
-    });
-
-
-    document.getElementById("clearGrade")
-        .addEventListener("click", function () {
-
-            document.getElementById("assignmentGrade1").value = "";
-            document.getElementById("assignmentWeight1").value = "";
-
-            document.getElementById("assignmentGrade2").value = "";
-            document.getElementById("assignmentWeight2").value = "";
-
-            document.getElementById("assignmentGrade3").value = "";
-            document.getElementById("assignmentWeight3").value = "";
-
-            document.getElementById("gradeResult").innerHTML =
-                "<p>Your current course grade will appear here.</p>";
-
-        });
-
-}
-
-
-
-/* ==========================================
-   ATTENDANCE CALCULATOR
-========================================== */
-
-const calculateAttendance =
-    document.getElementById("calculateAttendance");
-
-
-if (calculateAttendance) {
-
-    calculateAttendance.addEventListener("click", function () {
-
-        const totalClasses =
-            parseInt(document.getElementById("totalClasses").value);
-
-        const missedClasses =
-            parseInt(document.getElementById("missedClasses").value);
-
-        const requiredAttendance =
-            parseFloat(document.getElementById("requiredAttendance").value);
-
-
-        const result =
-            document.getElementById("attendanceResult");
-
-
-        if (
-            isNaN(totalClasses) ||
-            isNaN(missedClasses) ||
-            isNaN(requiredAttendance)
-        ) {
-
-            result.innerHTML =
-                "<p>Please fill in all the fields.</p>";
-
-            return;
-        }
-
-
-        if (
-            totalClasses <= 0 ||
-            missedClasses < 0 ||
-            missedClasses > totalClasses ||
-            requiredAttendance < 0 ||
-            requiredAttendance > 100
-        ) {
-
-            result.innerHTML =
-                "<p>Please enter valid values.</p>";
-
-            return;
-        }
-
-
-        const attendedClasses =
-            totalClasses - missedClasses;
-
-
-        const currentAttendance =
-            (attendedClasses / totalClasses) * 100;
-
-
-        const roundedAttendance =
-            Math.round(currentAttendance * 100) / 100;
-
-
-        /*
-            This is a simple initial version.
-            We will improve the attendance model later.
-        */
-
-        const maxTotalMisses =
-            Math.floor(
-                totalClasses *
-                (1 - requiredAttendance / 100)
-            );
-
-
-        const additionalMisses =
-            Math.max(
-                0,
-                maxTotalMisses - missedClasses
-            );
-
-
-        result.innerHTML = `
-            <p>
-                Your current attendance is
-                <strong>${roundedAttendance}%</strong>.
-            </p>
-
-            <p>
-                You can miss approximately
-                <strong>${additionalMisses}</strong>
-                more class(es).
-            </p>
-        `;
-
-    });
-
-
-    document.getElementById("clearAttendance")
-        .addEventListener("click", function () {
-
-            document.getElementById("totalClasses").value = "";
-
-            document.getElementById("missedClasses").value = "";
-
-            document.getElementById("requiredAttendance").value = "";
-
-
-            document.getElementById("attendanceResult").innerHTML =
-                "<p>Your attendance result will appear here.</p>";
-
-        });
-
-}
-
-
-
-/* ==========================================
-   PERCENTAGE CALCULATOR
-========================================== */
-
-const calculatePercentage =
-    document.getElementById("calculatePercentage");
-
-
-if (calculatePercentage) {
-
-    calculatePercentage.addEventListener("click", function () {
-
-        const part =
-            parseFloat(document.getElementById("percentagePart").value);
-
-        const total =
-            parseFloat(document.getElementById("percentageTotal").value);
-
-
-        const result =
-            document.getElementById("percentageResult");
-
-
-        if (
-            isNaN(part) ||
-            isNaN(total)
-        ) {
-
-            result.innerHTML =
-                "<p>Please fill in both fields.</p>";
-
-            return;
-        }
-
-
-        if (total === 0) {
-
-            result.innerHTML =
-                "<p>Total cannot be zero.</p>";
-
-            return;
-        }
-
-
-        const percentage =
-            (part / total) * 100;
-
-
-        const rounded =
-            Math.round(percentage * 100) / 100;
-
-
-        result.innerHTML = `
-            <p>
-                <strong>${part}</strong>
-                is
-                <strong>${rounded}%</strong>
-                of
-                <strong>${total}</strong>.
-            </p>
-        `;
-
-    });
-
-
-    document.getElementById("clearPercentage")
-        .addEventListener("click", function () {
-
-            document.getElementById("percentagePart").value = "";
-
-            document.getElementById("percentageTotal").value = "";
-
-
-            document.getElementById("percentageResult").innerHTML =
-                "<p>Your percentage will appear here.</p>";
-
-        });
-
-}
-/* ==========================================
-   FINAL GRADE CALCULATOR
-========================================== */
-
-const currentGradeInput = document.getElementById("currentGrade");
-const finalWeightInput = document.getElementById("finalWeight");
-const targetGradeInput = document.getElementById("targetGrade");
+const targetGradeInput =
+    document.getElementById("targetGrade");
 
 const calculateFinalGradeButton =
     document.getElementById("calculateFinalGrade");
@@ -750,6 +195,7 @@ function calculateRequiredFinalGrade() {
             </p>
 
         </div>
+
     `;
 
 
@@ -761,7 +207,6 @@ function calculateRequiredFinalGrade() {
 
     scenarioSection.classList.remove("hidden");
 }
-
 
 
 function generateScenarioTable(
@@ -785,7 +230,7 @@ function generateScenarioTable(
     scenarioTableBody.innerHTML = "";
 
 
-    scores.forEach(score => {
+    scores.forEach(function(score) {
 
         const finalCourseGrade =
             currentGrade * (1 - weight) +
@@ -816,7 +261,6 @@ function generateScenarioTable(
 }
 
 
-
 if (calculateFinalGradeButton) {
 
     calculateFinalGradeButton.addEventListener(
@@ -827,16 +271,16 @@ if (calculateFinalGradeButton) {
 }
 
 
-
 if (clearFinalGradeButton) {
 
     clearFinalGradeButton.addEventListener(
         "click",
-        () => {
+        function() {
 
             currentGradeInput.value = "";
             finalWeightInput.value = "";
             targetGradeInput.value = "";
+
 
             finalGradeResult.innerHTML = `
                 <div class="result-placeholder">
@@ -870,302 +314,580 @@ if (clearFinalGradeButton) {
 }
 
 
-
 /* QUICK TARGET BUTTONS */
 
 const quickTargetButtons =
-    document.querySelectorAll(
-        ".quick-targets button"
-    );
+    document.querySelectorAll(".quick-targets button");
 
 
-quickTargetButtons.forEach(button => {
+quickTargetButtons.forEach(function(button) {
 
     button.addEventListener(
         "click",
-        () => {
+        function() {
 
             const target =
                 button.dataset.target;
 
-            targetGradeInput.value =
-                target;
 
-            targetGradeInput.focus();
+            if (targetGradeInput) {
+
+                targetGradeInput.value =
+                    target;
+
+                targetGradeInput.focus();
+
+            }
 
         }
     );
 
 });
 
+
+
 /* ==========================================
-   FEEDBACK FORM
+   GRADE CALCULATOR
 ========================================== */
 
-const feedbackForm =
-    document.getElementById("feedbackForm");
-
-const feedbackMessage =
-    document.getElementById("feedbackMessage");
-
-const feedbackStatus =
-    document.getElementById("feedbackStatus");
+const calculateGrade =
+    document.getElementById("calculateGrade");
 
 
-if (feedbackForm) {
+if (calculateGrade) {
 
-    feedbackForm.addEventListener(
-        "submit",
-        (event) => {
+    calculateGrade.addEventListener(
+        "click",
+        function() {
 
-            event.preventDefault();
+            const grade1 =
+                parseFloat(
+                    document.getElementById(
+                        "assignmentGrade1"
+                    ).value
+                );
 
-            const message =
-                feedbackMessage.value.trim();
+            const weight1 =
+                parseFloat(
+                    document.getElementById(
+                        "assignmentWeight1"
+                    ).value
+                );
 
 
-            if (!message) {
+            const grade2 =
+                parseFloat(
+                    document.getElementById(
+                        "assignmentGrade2"
+                    ).value
+                );
 
-                feedbackStatus.textContent =
-                    "Please write a suggestion first.";
+            const weight2 =
+                parseFloat(
+                    document.getElementById(
+                        "assignmentWeight2"
+                    ).value
+                );
+
+
+            const grade3 =
+                parseFloat(
+                    document.getElementById(
+                        "assignmentGrade3"
+                    ).value
+                );
+
+            const weight3 =
+                parseFloat(
+                    document.getElementById(
+                        "assignmentWeight3"
+                    ).value
+                );
+
+
+            const result =
+                document.getElementById("gradeResult");
+
+
+            if (
+                isNaN(grade1) ||
+                isNaN(weight1) ||
+                isNaN(grade2) ||
+                isNaN(weight2) ||
+                isNaN(grade3) ||
+                isNaN(weight3)
+            ) {
+
+                result.innerHTML =
+                    "<p>Please fill in all the fields.</p>";
 
                 return;
-
             }
 
 
-            feedbackStatus.textContent =
-                "Thanks! Your suggestion has been recorded for this demo.";
+            const totalWeight =
+                weight1 +
+                weight2 +
+                weight3;
 
-            feedbackMessage.value = "";
+
+            if (
+                Math.abs(totalWeight - 100) > 0.01
+            ) {
+
+                result.innerHTML = `
+                    <p>
+                        Your assignment weights must add up to
+                        <strong>100%</strong>.
+                    </p>
+
+                    <p>
+                        Current total:
+                        ${totalWeight}%
+                    </p>
+                `;
+
+                return;
+            }
+
+
+            const finalGrade =
+                (
+                    grade1 * weight1 +
+                    grade2 * weight2 +
+                    grade3 * weight3
+                ) / 100;
+
+
+            const rounded =
+                Math.round(
+                    finalGrade * 100
+                ) / 100;
+
+
+            result.innerHTML = `
+                <p>
+                    Your current course grade is
+                </p>
+
+                <strong>
+                    ${rounded}%
+                </strong>
+            `;
 
         }
     );
 
-}
-/* =========================
-   GPA CALCULATOR
-========================= */
 
-const coursesContainer = document.getElementById("coursesContainer");
-const addCourseButton = document.getElementById("addCourse");
-const calculateGPAButton = document.getElementById("calculateGPA");
-const clearGPAButton = document.getElementById("clearGPA");
-const gpaResult = document.getElementById("gpaResult");
+    const clearGrade =
+        document.getElementById("clearGrade");
+
+
+    if (clearGrade) {
+
+        clearGrade.addEventListener(
+            "click",
+            function() {
+
+                document.getElementById(
+                    "assignmentGrade1"
+                ).value = "";
+
+                document.getElementById(
+                    "assignmentWeight1"
+                ).value = "";
+
+
+                document.getElementById(
+                    "assignmentGrade2"
+                ).value = "";
+
+                document.getElementById(
+                    "assignmentWeight2"
+                ).value = "";
+
+
+                document.getElementById(
+                    "assignmentGrade3"
+                ).value = "";
+
+                document.getElementById(
+                    "assignmentWeight3"
+                ).value = "";
+
+
+                document.getElementById(
+                    "gradeResult"
+                ).innerHTML =
+                    "<p>Your current course grade will appear here.</p>";
+
+            }
+        );
+
+    }
+
+}
+
+
+
+/* ==========================================
+   ATTENDANCE CALCULATOR
+========================================== */
+
+const calculateAttendance =
+    document.getElementById(
+        "calculateAttendance"
+    );
+
+
+if (calculateAttendance) {
+
+    calculateAttendance.addEventListener(
+        "click",
+        function() {
+
+            const totalClasses =
+                parseInt(
+                    document.getElementById(
+                        "totalClasses"
+                    ).value
+                );
+
+
+            const missedClasses =
+                parseInt(
+                    document.getElementById(
+                        "missedClasses"
+                    ).value
+                );
+
+
+            const requiredAttendance =
+                parseFloat(
+                    document.getElementById(
+                        "requiredAttendance"
+                    ).value
+                );
+
+
+            const result =
+                document.getElementById(
+                    "attendanceResult"
+                );
+
+
+            if (
+                isNaN(totalClasses) ||
+                isNaN(missedClasses) ||
+                isNaN(requiredAttendance)
+            ) {
+
+                result.innerHTML =
+                    "<p>Please fill in all the fields.</p>";
+
+                return;
+            }
+
+
+            if (
+                totalClasses <= 0 ||
+                missedClasses < 0 ||
+                missedClasses > totalClasses ||
+                requiredAttendance < 0 ||
+                requiredAttendance > 100
+            ) {
+
+                result.innerHTML =
+                    "<p>Please enter valid values.</p>";
+
+                return;
+            }
+
+
+            const attendedClasses =
+                totalClasses -
+                missedClasses;
+
+
+            const currentAttendance =
+                (
+                    attendedClasses /
+                    totalClasses
+                ) * 100;
+
+
+            const roundedAttendance =
+                Math.round(
+                    currentAttendance * 100
+                ) / 100;
+
+
+            const maxTotalMisses =
+                Math.floor(
+                    totalClasses *
+                    (
+                        1 -
+                        requiredAttendance / 100
+                    )
+                );
+
+
+            const additionalMisses =
+                Math.max(
+                    0,
+                    maxTotalMisses -
+                    missedClasses
+                );
+
+
+            result.innerHTML = `
+                <p>
+                    Your current attendance is
+                    <strong>
+                        ${roundedAttendance}%
+                    </strong>.
+                </p>
+
+                <p>
+                    You can miss approximately
+                    <strong>
+                        ${additionalMisses}
+                    </strong>
+                    more class(es).
+                </p>
+            `;
+
+        }
+    );
+
+
+    const clearAttendance =
+        document.getElementById(
+            "clearAttendance"
+        );
+
+
+    if (clearAttendance) {
+
+        clearAttendance.addEventListener(
+            "click",
+            function() {
+
+                document.getElementById(
+                    "totalClasses"
+                ).value = "";
+
+
+                document.getElementById(
+                    "missedClasses"
+                ).value = "";
+
+
+                document.getElementById(
+                    "requiredAttendance"
+                ).value = "";
+
+
+                document.getElementById(
+                    "attendanceResult"
+                ).innerHTML =
+                    "<p>Your attendance result will appear here.</p>";
+
+            }
+        );
+
+    }
+
+}
+
+
+
+/* ==========================================
+   PERCENTAGE CALCULATOR
+========================================== */
+
+const calculatePercentage =
+    document.getElementById(
+        "calculatePercentage"
+    );
+
+
+if (calculatePercentage) {
+
+    calculatePercentage.addEventListener(
+        "click",
+        function() {
+
+            const part =
+                parseFloat(
+                    document.getElementById(
+                        "percentagePart"
+                    ).value
+                );
+
+
+            const total =
+                parseFloat(
+                    document.getElementById(
+                        "percentageTotal"
+                    ).value
+                );
+
+
+            const result =
+                document.getElementById(
+                    "percentageResult"
+                );
+
+
+            if (
+                isNaN(part) ||
+                isNaN(total)
+            ) {
+
+                result.innerHTML =
+                    "<p>Please fill in both fields.</p>";
+
+                return;
+            }
+
+
+            if (total === 0) {
+
+                result.innerHTML =
+                    "<p>Total cannot be zero.</p>";
+
+                return;
+            }
+
+
+            const percentage =
+                (part / total) * 100;
+
+
+            const rounded =
+                Math.round(
+                    percentage * 100
+                ) / 100;
+
+
+            result.innerHTML = `
+                <p>
+                    <strong>
+                        ${part}
+                    </strong>
+
+                    is
+
+                    <strong>
+                        ${rounded}%
+                    </strong>
+
+                    of
+
+                    <strong>
+                        ${total}
+                    </strong>.
+                </p>
+            `;
+
+        }
+    );
+
+
+    const clearPercentage =
+        document.getElementById(
+            "clearPercentage"
+        );
+
+
+    if (clearPercentage) {
+
+        clearPercentage.addEventListener(
+            "click",
+            function() {
+
+                document.getElementById(
+                    "percentagePart"
+                ).value = "";
+
+
+                document.getElementById(
+                    "percentageTotal"
+                ).value = "";
+
+
+                document.getElementById(
+                    "percentageResult"
+                ).innerHTML =
+                    "<p>Your percentage will appear here.</p>";
+
+            }
+        );
+
+    }
+
+}
+
+
+
+/* ==========================================
+   GPA CALCULATOR
+========================================== */
+
+const coursesContainer =
+    document.getElementById(
+        "coursesContainer"
+    );
+
+
+const addCourseButton =
+    document.getElementById(
+        "addCourse"
+    );
+
+
+const calculateGPAButton =
+    document.getElementById(
+        "calculateGPA"
+    );
+
+
+const clearGPAButton =
+    document.getElementById(
+        "clearGPA"
+    );
+
+
+const gpaResult =
+    document.getElementById(
+        "gpaResult"
+    );
+
 
 
 /* ADD COURSE */
 
-if (addCourseButton && coursesContainer) {
+if (
+    addCourseButton &&
+    coursesContainer
+) {
 
-    addCourseButton.addEventListener("click", function () {
+    addCourseButton.addEventListener(
+        "click",
+        function() {
 
-        const courseRow = document.createElement("div");
-
-        courseRow.className = "course-row";
-
-        courseRow.innerHTML = `
-
-            <div class="course-input">
-
-                <label>
-                    Course name
-                </label>
-
-                <input
-                    type="text"
-                    class="course-name"
-                    placeholder="Example: Mathematics"
-                >
-
-            </div>
-
-
-            <div class="course-input">
-
-                <label>
-                    Grade
-                </label>
-
-                <select class="course-grade">
-
-                    <option value="4.0">A</option>
-                    <option value="3.7">A-</option>
-                    <option value="3.3">B+</option>
-                    <option value="3.0">B</option>
-                    <option value="2.7">B-</option>
-                    <option value="2.3">C+</option>
-                    <option value="2.0">C</option>
-                    <option value="1.7">C-</option>
-                    <option value="1.3">D+</option>
-                    <option value="1.0">D</option>
-                    <option value="0.0">F</option>
-
-                </select>
-
-            </div>
-
-
-            <div class="course-input">
-
-                <label>
-                    Credits
-                </label>
-
-                <input
-                    type="number"
-                    class="course-credits"
-                    placeholder="3"
-                    min="0.1"
-                    step="0.1"
-                >
-
-            </div>
-
-
-            <button
-                type="button"
-                class="remove-course"
-            >
-                ×
-            </button>
-
-        `;
-
-        coursesContainer.appendChild(courseRow);
-
-    });
-
-}
-
-
-/* REMOVE COURSE */
-
-if (coursesContainer) {
-
-    coursesContainer.addEventListener("click", function (event) {
-
-        if (event.target.classList.contains("remove-course")) {
-
-            const rows = coursesContainer.querySelectorAll(".course-row");
-
-            if (rows.length > 1) {
-
-                event.target.closest(".course-row").remove();
-
-            }
-
-        }
-
-    });
-
-}
-
-
-/* CALCULATE GPA */
-
-if (calculateGPAButton) {
-
-    calculateGPAButton.addEventListener("click", function () {
-
-        const courseRows =
-            document.querySelectorAll(".course-row");
-
-        let totalGradePoints = 0;
-        let totalCredits = 0;
-        let validCourses = 0;
-
-        courseRows.forEach(function (row) {
-
-            const grade =
-                parseFloat(
-                    row.querySelector(".course-grade").value
+            const courseRow =
+                document.createElement(
+                    "div"
                 );
 
-            const credits =
-                parseFloat(
-                    row.querySelector(".course-credits").value
-                );
 
-            if (!isNaN(grade) && !isNaN(credits) && credits > 0) {
-
-                totalGradePoints += grade * credits;
-
-                totalCredits += credits;
-
-                validCourses++;
-
-            }
-
-        });
+            courseRow.className =
+                "course-row";
 
 
-        if (validCourses === 0 || totalCredits === 0) {
-
-            gpaResult.innerHTML = `
-
-                <div class="result-placeholder">
-
-                    <span class="result-icon">
-                        ⚠️
-                    </span>
-
-                    <p>
-                        Please enter credits for at least one course.
-                    </p>
-
-                </div>
-
-            `;
-
-            return;
-
-        }
-
-
-        const gpa =
-            totalGradePoints / totalCredits;
-
-
-        gpaResult.innerHTML = `
-
-            <div class="result-success">
-
-                <span class="result-icon">
-                    🎓
-                </span>
-
-                <h3>
-                    Your GPA
-                </h3>
-
-                <div class="result-number">
-                    ${gpa.toFixed(2)}
-                </div>
-
-                <p>
-                    Based on ${validCourses} course${validCourses === 1 ? "" : "s"}
-                    and ${totalCredits} total credit${totalCredits === 1 ? "" : "s"}.
-                </p>
-
-            </div>
-
-        `;
-
-    });
-
-}
-
-
-/* CLEAR GPA */
-
-if (clearGPAButton) {
-
-    clearGPAButton.addEventListener("click", function () {
-
-        coursesContainer.innerHTML = `
-
-            <div class="course-row">
+            courseRow.innerHTML = `
 
                 <div class="course-input">
 
@@ -1190,17 +912,49 @@ if (clearGPAButton) {
 
                     <select class="course-grade">
 
-                        <option value="4.0">A</option>
-                        <option value="3.7">A-</option>
-                        <option value="3.3">B+</option>
-                        <option value="3.0">B</option>
-                        <option value="2.7">B-</option>
-                        <option value="2.3">C+</option>
-                        <option value="2.0">C</option>
-                        <option value="1.7">C-</option>
-                        <option value="1.3">D+</option>
-                        <option value="1.0">D</option>
-                        <option value="0.0">F</option>
+                        <option value="4.0">
+                            A
+                        </option>
+
+                        <option value="3.7">
+                            A-
+                        </option>
+
+                        <option value="3.3">
+                            B+
+                        </option>
+
+                        <option value="3.0">
+                            B
+                        </option>
+
+                        <option value="2.7">
+                            B-
+                        </option>
+
+                        <option value="2.3">
+                            C+
+                        </option>
+
+                        <option value="2.0">
+                            C
+                        </option>
+
+                        <option value="1.7">
+                            C-
+                        </option>
+
+                        <option value="1.3">
+                            D+
+                        </option>
+
+                        <option value="1.0">
+                            D
+                        </option>
+
+                        <option value="0.0">
+                            F
+                        </option>
 
                     </select>
 
@@ -1231,27 +985,375 @@ if (clearGPAButton) {
                     ×
                 </button>
 
-            </div>
-
-        `;
+            `;
 
 
-        gpaResult.innerHTML = `
+            coursesContainer.appendChild(
+                courseRow
+            );
 
-            <div class="result-placeholder">
+        }
+    );
 
-                <span class="result-icon">
-                    📊
-                </span>
+}
 
-                <p>
-                    Your GPA will appear here.
-                </p>
 
-            </div>
 
-        `;
+/* REMOVE COURSE */
 
-    });
+if (coursesContainer) {
+
+    coursesContainer.addEventListener(
+        "click",
+        function(event) {
+
+            if (
+                event.target.classList.contains(
+                    "remove-course"
+                )
+            ) {
+
+                const rows =
+                    coursesContainer.querySelectorAll(
+                        ".course-row"
+                    );
+
+
+                if (rows.length > 1) {
+
+                    event.target
+                        .closest(".course-row")
+                        .remove();
+
+                }
+
+            }
+
+        }
+    );
+
+}
+
+
+
+/* CALCULATE GPA */
+
+if (calculateGPAButton) {
+
+    calculateGPAButton.addEventListener(
+        "click",
+        function() {
+
+            const courseRows =
+                coursesContainer.querySelectorAll(
+                    ".course-row"
+                );
+
+
+            let totalGradePoints = 0;
+            let totalCredits = 0;
+            let validCourses = 0;
+
+
+            courseRows.forEach(
+                function(row) {
+
+                    const grade =
+                        parseFloat(
+                            row.querySelector(
+                                ".course-grade"
+                            ).value
+                        );
+
+
+                    const credits =
+                        parseFloat(
+                            row.querySelector(
+                                ".course-credits"
+                            ).value
+                        );
+
+
+                    if (
+                        !isNaN(grade) &&
+                        !isNaN(credits) &&
+                        credits > 0
+                    ) {
+
+                        totalGradePoints +=
+                            grade * credits;
+
+
+                        totalCredits +=
+                            credits;
+
+
+                        validCourses++;
+
+                    }
+
+                }
+            );
+
+
+            if (
+                validCourses === 0 ||
+                totalCredits === 0
+            ) {
+
+                gpaResult.innerHTML = `
+
+                    <div class="result-placeholder">
+
+                        <span class="result-icon">
+                            ⚠️
+                        </span>
+
+                        <p>
+                            Please enter credits for at least one course.
+                        </p>
+
+                    </div>
+
+                `;
+
+                return;
+
+            }
+
+
+            const gpa =
+                totalGradePoints /
+                totalCredits;
+
+
+            gpaResult.innerHTML = `
+
+                <div class="result-success">
+
+                    <span class="result-icon">
+                        🎓
+                    </span>
+
+                    <h3>
+                        Your GPA
+                    </h3>
+
+                    <div class="result-number">
+                        ${gpa.toFixed(2)}
+                    </div>
+
+                    <p>
+                        Based on
+                        ${validCourses}
+                        course${validCourses === 1 ? "" : "s"}
+                        and
+                        ${totalCredits}
+                        total credit${totalCredits === 1 ? "" : "s"}.
+                    </p>
+
+                </div>
+
+            `;
+
+        }
+    );
+
+}
+
+
+
+/* CLEAR GPA */
+
+if (
+    clearGPAButton &&
+    coursesContainer
+) {
+
+    clearGPAButton.addEventListener(
+        "click",
+        function() {
+
+            coursesContainer.innerHTML = `
+
+                <div class="course-row">
+
+                    <div class="course-input">
+
+                        <label>
+                            Course name
+                        </label>
+
+                        <input
+                            type="text"
+                            class="course-name"
+                            placeholder="Example: Mathematics"
+                        >
+
+                    </div>
+
+
+                    <div class="course-input">
+
+                        <label>
+                            Grade
+                        </label>
+
+                        <select class="course-grade">
+
+                            <option value="4.0">
+                                A
+                            </option>
+
+                            <option value="3.7">
+                                A-
+                            </option>
+
+                            <option value="3.3">
+                                B+
+                            </option>
+
+                            <option value="3.0">
+                                B
+                            </option>
+
+                            <option value="2.7">
+                                B-
+                            </option>
+
+                            <option value="2.3">
+                                C+
+                            </option>
+
+                            <option value="2.0">
+                                C
+                            </option>
+
+                            <option value="1.7">
+                                C-
+                            </option>
+
+                            <option value="1.3">
+                                D+
+                            </option>
+
+                            <option value="1.0">
+                                D
+                            </option>
+
+                            <option value="0.0">
+                                F
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="course-input">
+
+                        <label>
+                            Credits
+                        </label>
+
+                        <input
+                            type="number"
+                            class="course-credits"
+                            placeholder="3"
+                            min="0.1"
+                            step="0.1"
+                        >
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="remove-course"
+                    >
+                        ×
+                    </button>
+
+                </div>
+
+            `;
+
+
+            gpaResult.innerHTML = `
+
+                <div class="result-placeholder">
+
+                    <span class="result-icon">
+                        📊
+                    </span>
+
+                    <p>
+                        Your GPA will appear here.
+                    </p>
+
+                </div>
+
+            `;
+
+        }
+    );
+
+}
+
+
+
+/* ==========================================
+   FEEDBACK FORM
+========================================== */
+
+const feedbackForm =
+    document.getElementById(
+        "feedbackForm"
+    );
+
+
+const feedbackMessage =
+    document.getElementById(
+        "feedbackMessage"
+    );
+
+
+const feedbackStatus =
+    document.getElementById(
+        "feedbackStatus"
+    );
+
+
+if (feedbackForm) {
+
+    feedbackForm.addEventListener(
+        "submit",
+        function(event) {
+
+            event.preventDefault();
+
+
+            const message =
+                feedbackMessage.value.trim();
+
+
+            if (!message) {
+
+                feedbackStatus.textContent =
+                    "Please write a suggestion first.";
+
+                return;
+
+            }
+
+
+            feedbackStatus.textContent =
+                "Thanks! Your suggestion has been recorded for this demo.";
+
+
+            feedbackMessage.value = "";
+
+        }
+    );
 
 }
