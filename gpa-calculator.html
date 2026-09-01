@@ -2,94 +2,421 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>GPA Calculator - Student Toolkit</title>
+    <title>GPA Calculator - Calculate Your GPA | Student Toolkit</title>
 
     <meta name="description"
-        content="Calculate your GPA quickly and easily with our free GPA Calculator.">
+        content="Calculate your GPA quickly and easily. Add your courses, grades and credits to calculate your GPA on a 4.0 scale.">
 
     <link rel="stylesheet" href="style.css">
+
 </head>
+
 
 <body>
 
+
 <header>
+
     <div class="header-content">
-        <a href="index.html" class="logo">Student Toolkit</a>
-        <p>Free tools to make student life easier.</p>
+
+        <a href="index.html" class="logo">
+            Student Toolkit
+        </a>
+
+        <p>
+            Free tools to make student life easier.
+        </p>
+
     </div>
+
 </header>
 
+
+
 <main>
+
+
+    <!-- HERO -->
+
+    <section class="calculator-hero">
+
+        <div class="hero-badge">
+            🎓 Student Tool
+        </div>
+
+        <h1>
+            GPA Calculator
+        </h1>
+
+        <p class="hero-subtitle">
+            Calculate your Grade Point Average quickly and easily.
+        </p>
+
+    </section>
+
+
+
+    <!-- CALCULATOR -->
 
     <section class="calculator-section">
 
         <div class="calculator-card">
 
-            <h1>GPA Calculator</h1>
 
-            <p class="calculator-description">
-                Calculate your GPA using your course grades and credit hours.
-            </p>
+            <div class="calculator-intro">
 
-            <div class="input-group">
-                <label for="gpaGrade1">Course 1 Grade (0-4)</label>
-                <input type="number" id="gpaGrade1" placeholder="Example: 3.5"
-                    min="0" max="4" step="0.01">
+                <h2>
+                    Calculate Your GPA
+                </h2>
+
+                <p>
+                    Add your courses, select the grade you received,
+                    enter the number of credits, and calculate your GPA.
+                </p>
+
             </div>
 
-            <div class="input-group">
-                <label for="gpaCredits1">Course 1 Credits</label>
-                <input type="number" id="gpaCredits1" placeholder="Example: 3"
-                    min="0" step="0.5">
+
+
+            <div id="coursesContainer">
+
+
+                <div class="course-row">
+
+                    <div class="course-input">
+
+                        <label>
+                            Course name
+                        </label>
+
+                        <input
+                            type="text"
+                            class="course-name"
+                            placeholder="Example: Mathematics"
+                        >
+
+                    </div>
+
+
+                    <div class="course-input">
+
+                        <label>
+                            Grade
+                        </label>
+
+                        <select class="course-grade">
+
+                            <option value="4.0">A</option>
+                            <option value="3.7">A-</option>
+                            <option value="3.3">B+</option>
+                            <option value="3.0">B</option>
+                            <option value="2.7">B-</option>
+                            <option value="2.3">C+</option>
+                            <option value="2.0">C</option>
+                            <option value="1.7">C-</option>
+                            <option value="1.3">D+</option>
+                            <option value="1.0">D</option>
+                            <option value="0.0">F</option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="course-input">
+
+                        <label>
+                            Credits
+                        </label>
+
+                        <input
+                            type="number"
+                            class="course-credits"
+                            placeholder="3"
+                            min="0.1"
+                            step="0.1"
+                        >
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="remove-course"
+                    >
+                        ×
+                    </button>
+
+                </div>
+
+
             </div>
 
-            <div class="input-group">
-                <label for="gpaGrade2">Course 2 Grade (0-4)</label>
-                <input type="number" id="gpaGrade2" placeholder="Example: 3.0"
-                    min="0" max="4" step="0.01">
-            </div>
 
-            <div class="input-group">
-                <label for="gpaCredits2">Course 2 Credits</label>
-                <input type="number" id="gpaCredits2" placeholder="Example: 3"
-                    min="0" step="0.5">
-            </div>
 
-            <div class="input-group">
-                <label for="gpaGrade3">Course 3 Grade (0-4)</label>
-                <input type="number" id="gpaGrade3" placeholder="Example: 3.7"
-                    min="0" max="4" step="0.01">
-            </div>
-
-            <div class="input-group">
-                <label for="gpaCredits3">Course 3 Credits</label>
-                <input type="number" id="gpaCredits3" placeholder="Example: 3"
-                    min="0" step="0.5">
-            </div>
-
-            <button id="calculateGPA" class="primary-button">
-                Calculate GPA
+            <button
+                type="button"
+                id="addCourse"
+                class="secondary-button"
+            >
+                + Add Another Course
             </button>
 
-            <button id="clearGPA" class="secondary-button">
+
+
+            <button
+                type="button"
+                id="calculateGPA"
+                class="primary-button"
+            >
+                Calculate My GPA
+            </button>
+
+
+
+            <button
+                type="button"
+                id="clearGPA"
+                class="secondary-button"
+            >
                 Clear
             </button>
 
-            <div id="gpaResult" class="result">
-                <p>Your GPA will appear here.</p>
+
+
+            <!-- RESULT -->
+
+            <div
+                id="gpaResult"
+                class="result final-result"
+            >
+
+                <div class="result-placeholder">
+
+                    <span class="result-icon">
+                        📊
+                    </span>
+
+                    <p>
+                        Your GPA will appear here.
+                    </p>
+
+                </div>
+
             </div>
+
 
         </div>
 
     </section>
 
 
-    <section class="information-section">
 
-        <h2>What is GPA?</h2>
+    <!-- GPA SCALE -->
+
+    <section class="content-card">
+
+        <h2>
+            GPA Scale
+        </h2>
+
+        <p>
+            This calculator uses a common 4.0 GPA scale.
+            Grading systems can vary between schools and universities.
+        </p>
+
+
+        <div class="grade-scale-wrapper">
+
+            <table class="grade-scale">
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            Letter Grade
+                        </th>
+
+                        <th>
+                            GPA Points
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                    <tr>
+                        <td>A</td>
+                        <td>4.0</td>
+                    </tr>
+
+                    <tr>
+                        <td>A-</td>
+                        <td>3.7</td>
+                    </tr>
+
+                    <tr>
+                        <td>B+</td>
+                        <td>3.3</td>
+                    </tr>
+
+                    <tr>
+                        <td>B</td>
+                        <td>3.0</td>
+                    </tr>
+
+                    <tr>
+                        <td>B-</td>
+                        <td>2.7</td>
+                    </tr>
+
+                    <tr>
+                        <td>C+</td>
+                        <td>2.3</td>
+                    </tr>
+
+                    <tr>
+                        <td>C</td>
+                        <td>2.0</td>
+                    </tr>
+
+                    <tr>
+                        <td>C-</td>
+                        <td>1.7</td>
+                    </tr>
+
+                    <tr>
+                        <td>D+</td>
+                        <td>1.3</td>
+                    </tr>
+
+                    <tr>
+                        <td>D</td>
+                        <td>1.0</td>
+                    </tr>
+
+                    <tr>
+                        <td>F</td>
+                        <td>0.0</td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- FORMULA -->
+
+    <section class="content-card">
+
+        <h2>
+            How is GPA calculated?
+        </h2>
+
+        <p>
+            GPA is calculated using a weighted average of your
+            grade points and the number of credits for each course.
+        </p>
+
+
+        <div class="formula-box">
+
+            <strong>
+                GPA Formula
+            </strong>
+
+            <p>
+                GPA = Total Grade Points ÷ Total Credits
+            </p>
+
+        </div>
+
+
+        <p>
+            Each course contributes according to the number of
+            credits it carries. A course worth more credits has
+            a greater effect on your overall GPA.
+        </p>
+
+    </section>
+
+
+
+    <!-- EXAMPLE -->
+
+    <section class="content-card">
+
+        <h2>
+            GPA Calculation Example
+        </h2>
+
+        <p>
+            Imagine you have three courses:
+        </p>
+
+
+        <div class="example-box">
+
+            <p>
+                Mathematics: A (4.0) × 3 credits
+            </p>
+
+            <p>
+                History: B (3.0) × 3 credits
+            </p>
+
+            <p>
+                English: A- (3.7) × 2 credits
+            </p>
+
+            <p>
+                Total grade points =
+                <strong>
+                    12 + 9 + 7.4 = 28.4
+                </strong>
+            </p>
+
+            <p>
+                Total credits =
+                <strong>
+                    8
+                </strong>
+            </p>
+
+            <p>
+                GPA =
+                <strong>
+                    28.4 ÷ 8 = 3.55
+                </strong>
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- GPA INFORMATION -->
+
+    <section class="content-card">
+
+        <h2>
+            What is GPA?
+        </h2>
 
         <p>
             GPA stands for Grade Point Average. It is a numerical
@@ -97,33 +424,208 @@
         </p>
 
         <p>
-            Many colleges and universities in the United States use
-            a 4.0 GPA scale, although grading systems can vary between
-            institutions.
+            Many schools and universities use a 4.0 scale, although
+            grading systems and GPA calculations can vary by institution.
         </p>
 
-        <h2>How is GPA calculated?</h2>
-
         <p>
-            GPA is calculated by multiplying each course grade by its
-            credit value, adding those results together, and dividing
-            by the total number of credits.
+            Always check your school's official grading policy if
+            you need an exact GPA conversion for academic purposes.
         </p>
 
     </section>
 
 
+
+    <!-- FAQ -->
+
+    <section class="content-card">
+
+        <h2>
+            Frequently Asked Questions
+        </h2>
+
+
+        <div class="faq-item">
+
+            <h3>
+                What is a good GPA?
+            </h3>
+
+            <p>
+                On a 4.0 scale, a GPA around 3.0 or higher is often
+                considered strong, while a GPA of 3.5 or above is
+                commonly considered very good. However, expectations
+                vary by school, program and country.
+            </p>
+
+        </div>
+
+
+        <div class="faq-item">
+
+            <h3>
+                What is a 4.0 GPA?
+            </h3>
+
+            <p>
+                A 4.0 GPA generally represents the highest point
+                on a standard 4.0 grading scale and commonly
+                corresponds to an A average.
+            </p>
+
+        </div>
+
+
+        <div class="faq-item">
+
+            <h3>
+                Does every university use the same GPA scale?
+            </h3>
+
+            <p>
+                No. Universities and schools can use different
+                grading systems, scales and conversion methods.
+                This calculator uses a common 4.0 scale.
+            </p>
+
+        </div>
+
+
+        <div class="faq-item">
+
+            <h3>
+                Does a course with more credits affect my GPA more?
+            </h3>
+
+            <p>
+                Yes. GPA is normally calculated using a weighted
+                average, so courses with more credits have a larger
+                effect on your overall GPA.
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- FEEDBACK -->
+
+    <section class="feedback-card">
+
+        <div>
+
+            <span class="feedback-icon">
+                💡
+            </span>
+
+            <h2>
+                Help us improve Student Toolkit
+            </h2>
+
+            <p>
+                Found something confusing, incorrect or missing?
+                We'd love to hear your ideas.
+            </p>
+
+        </div>
+
+
+        <form
+            id="feedbackForm"
+            class="feedback-form"
+        >
+
+            <label for="feedbackMessage">
+                Your suggestion
+            </label>
+
+            <textarea
+                id="feedbackMessage"
+                name="feedbackMessage"
+                placeholder="Tell us what we could improve..."
+                maxlength="1000"
+                required
+            ></textarea>
+
+            <button
+                type="submit"
+                class="feedback-button"
+            >
+                Send suggestion
+            </button>
+
+            <p
+                id="feedbackStatus"
+                class="feedback-status"
+            ></p>
+
+        </form>
+
+    </section>
+
+
+
+    <!-- OTHER TOOLS -->
+
+    <section class="other-tools">
+
+        <h2>
+            More Student Tools
+        </h2>
+
+
+        <div class="other-tools-grid">
+
+            <a href="final-grade-calculator.html">
+                🎯 Final Grade Calculator
+            </a>
+
+            <a href="grade-calculator.html">
+                📝 Grade Calculator
+            </a>
+
+            <a href="attendance-calculator.html">
+                📅 Attendance Calculator
+            </a>
+
+            <a href="percentage-calculator.html">
+                % Percentage Calculator
+            </a>
+
+        </div>
+
+    </section>
+
+
+
     <div class="back-home">
-        <a href="index.html">← Back to Student Toolkit</a>
+
+        <a href="index.html">
+            ← Back to Student Toolkit
+        </a>
+
     </div>
+
 
 </main>
 
+
+
 <footer>
-    <p>© 2026 Student Toolkit</p>
+
+    <p>
+        © 2026 Student Toolkit
+    </p>
+
 </footer>
+
+
 
 <script src="script.js"></script>
 
+
 </body>
+
 </html>
