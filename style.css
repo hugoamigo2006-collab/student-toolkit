@@ -373,3 +373,736 @@ footer {
     }
 
 }
+/* ==========================================
+   FINAL GRADE CALCULATOR
+========================================== */
+
+.calculator-hero {
+    text-align: center;
+    max-width: 850px;
+    margin: 55px auto 35px;
+    padding: 0 20px;
+}
+
+
+.hero-badge {
+    display: inline-block;
+
+    padding: 8px 15px;
+
+    border-radius: 30px;
+
+    background: #eef2ff;
+
+    color: #4338ca;
+
+    font-weight: 700;
+
+    font-size: 14px;
+
+    margin-bottom: 15px;
+}
+
+
+.calculator-hero h1 {
+    font-size: 46px;
+
+    margin-bottom: 15px;
+}
+
+
+.hero-subtitle {
+    max-width: 650px;
+
+    margin: auto;
+
+    font-size: 20px;
+
+    line-height: 1.6;
+
+    color: #6b7280;
+}
+
+
+
+/* CALCULATOR */
+
+.calculator-section {
+    max-width: 760px;
+
+    margin: 0 auto;
+
+    padding: 20px;
+}
+
+
+.calculator-card {
+    background: white;
+
+    border-radius: 24px;
+
+    padding: 40px;
+
+    box-shadow:
+        0 12px 35px rgba(0, 0, 0, 0.08);
+}
+
+
+.calculator-intro {
+    margin-bottom: 30px;
+}
+
+
+.calculator-intro h2 {
+    font-size: 26px;
+
+    margin-bottom: 10px;
+}
+
+
+.calculator-intro p {
+    color: #6b7280;
+
+    line-height: 1.6;
+}
+
+
+
+/* INPUTS */
+
+.input-group {
+    margin-bottom: 24px;
+}
+
+
+.input-group label {
+    display: block;
+
+    font-weight: 700;
+
+    margin-bottom: 8px;
+}
+
+
+.input-group small {
+    display: block;
+
+    margin-top: 7px;
+
+    color: #6b7280;
+}
+
+
+.input-wrapper {
+    position: relative;
+}
+
+
+.input-wrapper input {
+    width: 100%;
+
+    box-sizing: border-box;
+
+    padding: 15px 45px 15px 15px;
+
+    border: 2px solid #e5e7eb;
+
+    border-radius: 12px;
+
+    font-size: 18px;
+
+    outline: none;
+
+    transition: 0.2s;
+}
+
+
+.input-wrapper input:focus {
+    border-color: #6366f1;
+
+    box-shadow:
+        0 0 0 4px rgba(99, 102, 241, 0.1);
+}
+
+
+.input-wrapper span {
+    position: absolute;
+
+    right: 16px;
+
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    color: #6b7280;
+
+    font-weight: 700;
+}
+
+
+
+/* QUICK TARGETS */
+
+.quick-targets {
+    display: flex;
+
+    align-items: center;
+
+    flex-wrap: wrap;
+
+    gap: 9px;
+
+    margin-bottom: 25px;
+}
+
+
+.quick-targets p {
+    margin: 0;
+
+    font-weight: 700;
+}
+
+
+.quick-targets button {
+    border: none;
+
+    background: #f3f4f6;
+
+    padding: 9px 13px;
+
+    border-radius: 20px;
+
+    cursor: pointer;
+
+    font-weight: 600;
+
+    transition: 0.2s;
+}
+
+
+.quick-targets button:hover {
+    background: #e0e7ff;
+}
+
+
+
+/* BUTTONS */
+
+.primary-button,
+.secondary-button {
+    width: 100%;
+
+    border: none;
+
+    border-radius: 12px;
+
+    padding: 15px;
+
+    font-size: 17px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+
+.primary-button {
+    background: #4f46e5;
+
+    color: white;
+
+    margin-bottom: 10px;
+}
+
+
+.primary-button:hover {
+    background: #4338ca;
+}
+
+
+.secondary-button {
+    background: #f3f4f6;
+
+    color: #374151;
+}
+
+
+.secondary-button:hover {
+    background: #e5e7eb;
+}
+
+
+
+/* RESULT */
+
+.final-result {
+    margin-top: 25px;
+
+    min-height: 150px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+}
+
+
+.result-placeholder {
+    text-align: center;
+
+    color: #6b7280;
+}
+
+
+.result-icon {
+    display: block;
+
+    font-size: 35px;
+
+    margin-bottom: 10px;
+}
+
+
+.success-result,
+.warning-result,
+.error-result {
+    width: 100%;
+
+    box-sizing: border-box;
+
+    padding: 25px;
+
+    border-radius: 18px;
+
+    text-align: center;
+}
+
+
+.success-result {
+    background: #ecfdf5;
+
+    border: 2px solid #a7f3d0;
+
+    color: #065f46;
+}
+
+
+.warning-result {
+    background: #fffbeb;
+
+    border: 2px solid #fde68a;
+
+    color: #92400e;
+}
+
+
+.error-result {
+    background: #fef2f2;
+
+    border: 2px solid #fecaca;
+
+    color: #991b1b;
+}
+
+
+.result-small-title {
+    display: block;
+
+    font-size: 15px;
+
+    font-weight: 700;
+
+    margin-bottom: 5px;
+}
+
+
+.big-result {
+    display: block;
+
+    font-size: 54px;
+
+    font-weight: 900;
+
+    margin: 5px 0 10px;
+}
+
+
+.success-result p,
+.warning-result p {
+    line-height: 1.6;
+
+    margin: 0;
+}
+
+
+
+/* CONTENT CARDS */
+
+.content-card {
+    max-width: 760px;
+
+    margin: 25px auto;
+
+    padding: 35px 40px;
+
+    background: white;
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 5px 20px rgba(0, 0, 0, 0.06);
+}
+
+
+.content-card h2 {
+    font-size: 26px;
+
+    margin-bottom: 15px;
+}
+
+
+.content-card h3 {
+    margin-top: 28px;
+
+    margin-bottom: 8px;
+}
+
+
+.content-card p {
+    color: #4b5563;
+
+    line-height: 1.7;
+}
+
+
+
+/* FORMULA */
+
+.formula-box {
+    margin: 25px 0;
+
+    padding: 25px;
+
+    background: #f5f3ff;
+
+    border-radius: 15px;
+
+    text-align: center;
+}
+
+
+.formula-box strong {
+    display: block;
+
+    margin-bottom: 12px;
+
+    color: #4338ca;
+}
+
+
+.formula-box p {
+    font-size: 18px;
+
+    font-weight: 700;
+
+    color: #312e81;
+}
+
+
+
+/* EXAMPLE */
+
+.example-box {
+    padding: 20px;
+
+    margin: 20px 0;
+
+    background: #f9fafb;
+
+    border-left: 5px solid #6366f1;
+
+    border-radius: 8px;
+}
+
+
+.example-box p {
+    margin: 7px 0;
+
+    font-family: monospace;
+}
+
+
+
+/* SIMPLE RESULT */
+
+.simple-result {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 5px;
+
+    padding: 20px;
+
+    background: #f9fafb;
+
+    border-radius: 14px;
+
+    margin: 15px 0 25px;
+}
+
+
+.simple-result strong {
+    font-size: 30px;
+
+    color: #4338ca;
+}
+
+
+
+/* TABLES */
+
+.scenario-table-wrapper,
+.grade-scale-wrapper {
+    overflow-x: auto;
+
+    margin-top: 20px;
+}
+
+
+.scenario-table,
+.grade-scale {
+    width: 100%;
+
+    border-collapse: collapse;
+}
+
+
+.scenario-table th,
+.scenario-table td,
+.grade-scale th,
+.grade-scale td {
+    padding: 13px;
+
+    text-align: left;
+
+    border-bottom: 1px solid #e5e7eb;
+}
+
+
+.scenario-table th,
+.grade-scale th {
+    background: #f9fafb;
+
+    font-weight: 700;
+}
+
+
+.scenario-table tr:hover {
+    background: #f9fafb;
+}
+
+
+
+/* FAQ */
+
+.faq-item {
+    padding: 20px 0;
+
+    border-bottom: 1px solid #e5e7eb;
+}
+
+
+.faq-item:last-child {
+    border-bottom: none;
+}
+
+
+.faq-item h3 {
+    margin-top: 0;
+}
+
+
+
+/* FEEDBACK */
+
+.feedback-card {
+    max-width: 760px;
+
+    margin: 35px auto;
+
+    padding: 30px 35px;
+
+    background: #eef2ff;
+
+    border-radius: 20px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 25px;
+}
+
+
+.feedback-icon {
+    font-size: 30px;
+}
+
+
+.feedback-card h2 {
+    margin: 8px 0;
+}
+
+
+.feedback-card p {
+    color: #4b5563;
+
+    margin: 0;
+}
+
+
+.feedback-button {
+    flex-shrink: 0;
+
+    border: none;
+
+    background: #4f46e5;
+
+    color: white;
+
+    padding: 13px 18px;
+
+    border-radius: 10px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+
+.feedback-button:hover {
+    background: #4338ca;
+}
+
+
+
+/* OTHER TOOLS */
+
+.other-tools {
+    max-width: 760px;
+
+    margin: 50px auto;
+
+    padding: 0 20px;
+}
+
+
+.other-tools h2 {
+    text-align: center;
+
+    margin-bottom: 25px;
+}
+
+
+.other-tools-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 15px;
+}
+
+
+.other-tools-grid a {
+    padding: 18px;
+
+    background: white;
+
+    border-radius: 14px;
+
+    text-decoration: none;
+
+    color: #111827;
+
+    font-weight: 700;
+
+    box-shadow:
+        0 4px 15px rgba(0, 0, 0, 0.06);
+
+    transition: 0.2s;
+}
+
+
+.other-tools-grid a:hover {
+    transform: translateY(-2px);
+}
+
+
+
+/* HIDDEN */
+
+.hidden {
+    display: none;
+}
+
+
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+
+    .calculator-hero h1 {
+        font-size: 36px;
+    }
+
+
+    .hero-subtitle {
+        font-size: 18px;
+    }
+
+
+    .calculator-card {
+        padding: 25px 20px;
+
+        border-radius: 18px;
+    }
+
+
+    .content-card {
+        margin: 20px;
+
+        padding: 25px 20px;
+    }
+
+
+    .feedback-card {
+        margin: 25px 20px;
+
+        padding: 25px 20px;
+
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+
+
+    .feedback-button {
+        width: 100%;
+    }
+
+
+    .other-tools-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .big-result {
+        font-size: 43px;
+    }
+
+}
