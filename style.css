@@ -1106,3 +1106,83 @@ footer {
     }
 
 }
+/* ==========================================
+   FEEDBACK FORM
+========================================== */
+
+.feedback-card {
+    align-items: flex-start;
+}
+
+
+.feedback-form {
+    width: 100%;
+    max-width: 430px;
+}
+
+
+.feedback-form label {
+    display: block;
+
+    font-weight: 700;
+
+    margin-bottom: 8px;
+}
+
+
+.feedback-form textarea {
+    width: 100%;
+
+    min-height: 130px;
+
+    box-sizing: border-box;
+
+    resize: vertical;
+
+    padding: 14px;
+
+    border: 2px solid #d1d5db;
+
+    border-radius: 12px;
+
+    font-family: inherit;
+
+    font-size: 15px;
+
+    line-height: 1.5;
+
+    outline: none;
+
+    margin-bottom: 12px;
+}
+
+
+.feedback-form textarea:focus {
+    border-color: #6366f1;
+
+    box-shadow:
+        0 0 0 4px rgba(99, 102, 241, 0.1);
+}
+
+
+.feedback-form .feedback-button {
+    width: 100%;
+}
+
+
+.feedback-status {
+    margin: 10px 0 0;
+
+    font-size: 14px;
+
+    font-weight: 600;
+}
+
+
+@media (max-width: 700px) {
+
+    .feedback-form {
+        max-width: none;
+    }
+
+}
