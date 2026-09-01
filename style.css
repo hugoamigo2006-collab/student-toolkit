@@ -276,7 +276,9 @@ footer {
 
 
 
-/* TOOLS GRID */
+/* ==========================================
+   TOOLS GRID
+========================================== */
 
 .tools-grid {
     max-width: 1000px;
@@ -293,36 +295,61 @@ footer {
 
 
 .tool-card {
+    display: block;
+
     background: white;
+
     padding: 30px;
 
     border-radius: 18px;
 
     box-shadow:
         0 5px 20px rgba(0, 0, 0, 0.08);
+
+    text-decoration: none;
+
+    color: #1f2937;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.tool-card:hover {
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 10px 28px rgba(0, 0, 0, 0.12);
 }
 
 
 .tool-card h2 {
     font-size: 23px;
+
     margin-bottom: 12px;
+
+    color: #1f2937;
 }
 
 
 .tool-card p {
     color: #6b7280;
+
     margin-bottom: 22px;
 }
 
 
-.tool-card a {
+.tool-card-button {
+    display: inline-block;
+
     color: #111827;
+
     font-weight: bold;
-    text-decoration: none;
 }
 
 
-.tool-card a:hover {
+.tool-card:hover .tool-card-button {
     text-decoration: underline;
 }
 
